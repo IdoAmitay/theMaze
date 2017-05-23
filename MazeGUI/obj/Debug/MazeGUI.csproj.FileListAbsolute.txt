@@ -1,0 +1,28 @@
+c:\users\user\documents\visual studio 2017\Projects\MazeGUI\MazeGUI\bin\Debug\MazeGUI.exe.config
+c:\users\user\documents\visual studio 2017\Projects\MazeGUI\MazeGUI\bin\Debug\MazeGUI.exe
+c:\users\user\documents\visual studio 2017\Projects\MazeGUI\MazeGUI\bin\Debug\MazeGUI.pdb
+c:\users\user\documents\visual studio 2017\Projects\MazeGUI\MazeGUI\obj\Debug\MazeGUI.csprojResolveAssemblyReference.cache
+c:\users\user\documents\visual studio 2017\Projects\MazeGUI\MazeGUI\obj\Debug\MainWindow.g.cs
+c:\users\user\documents\visual studio 2017\Projects\MazeGUI\MazeGUI\obj\Debug\App.g.cs
+c:\users\user\documents\visual studio 2017\Projects\MazeGUI\MazeGUI\obj\Debug\MazeGUI_MarkupCompile.cache
+c:\users\user\documents\visual studio 2017\Projects\MazeGUI\MazeGUI\obj\Debug\MazeGUI_MarkupCompile.lref
+c:\users\user\documents\visual studio 2017\Projects\MazeGUI\MazeGUI\obj\Debug\MainWindow.baml
+c:\users\user\documents\visual studio 2017\Projects\MazeGUI\MazeGUI\obj\Debug\MazeGUI.g.resources
+c:\users\user\documents\visual studio 2017\Projects\MazeGUI\MazeGUI\obj\Debug\MazeGUI.Properties.Resources.resources
+c:\users\user\documents\visual studio 2017\Projects\MazeGUI\MazeGUI\obj\Debug\MazeGUI.csproj.GenerateResource.Cache
+c:\users\user\documents\visual studio 2017\Projects\MazeGUI\MazeGUI\obj\Debug\MazeGUI.exe
+c:\users\user\documents\visual studio 2017\Projects\MazeGUI\MazeGUI\obj\Debug\MazeGUI.pdb
+C:\Users\User\Documents\Visual Studio 2017\Projects\MazeGUI\MazeGUI\obj\Debug\TheMazeBoard.g.cs
+C:\Users\User\Documents\Visual Studio 2017\Projects\MazeGUI\MazeGUI\obj\Debug\GameSettingswindow.g.cs
+C:\Users\User\Documents\Visual Studio 2017\Projects\MazeGUI\MazeGUI\bin\Debug\MazeGeneratorLib.dll
+C:\Users\User\Documents\Visual Studio 2017\Projects\MazeGUI\MazeGUI\bin\Debug\MazeLib.dll
+C:\Users\User\Documents\Visual Studio 2017\Projects\MazeGUI\MazeGUI\bin\Debug\Newtonsoft.Json.dll
+C:\Users\User\Documents\Visual Studio 2017\Projects\MazeGUI\MazeGUI\bin\Debug\Priority Queue.dll
+C:\Users\User\Documents\Visual Studio 2017\Projects\MazeGUI\MazeGUI\bin\Debug\SearchAlgorithmsLib.dll
+C:\Users\User\Documents\Visual Studio 2017\Projects\MazeGUI\MazeGUI\bin\Debug\Newtonsoft.Json.xml
+C:\Users\User\Documents\Visual Studio 2017\Projects\MazeGUI\MazeGUI\bin\Debug\Priority Queue.pdb
+C:\Users\User\Documents\Visual Studio 2017\Projects\MazeGUI\MazeGUI\bin\Debug\Priority Queue.xml
+C:\Users\User\Documents\Visual Studio 2017\Projects\MazeGUI\MazeGUI\bin\Debug\SearchAlgorithmsLib.pdb
+C:\Users\User\Documents\Visual Studio 2017\Projects\MazeGUI\MazeGUI\obj\Debug\GameSettingswindow.baml
+C:\Users\User\Documents\Visual Studio 2017\Projects\MazeGUI\MazeGUI\obj\Debug\TheMazeBoard.baml
+C:\Users\User\Documents\Visual Studio 2017\Projects\MazeGUI\MazeGUI\obj\Debug\MyMaze.g.cs
