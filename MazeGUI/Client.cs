@@ -18,10 +18,16 @@ namespace ClientProgram
     ///</summary>
     class Client : IMvvmModel
     {
-       
+        private string command;
         public MazeLib.Maze MyMaze { get; set; }
         public MazeLib.Position PlayerPosition { get; set; }
+        public Dictionary<string, Action<string>> Commands { get ; set ; }
+
         public event Action<String> MessageReceived;
+       // public event Action<string> MazeUpdate;
+        //public event Action<string> PositionUpdate;
+       // private Dictionary<string, Action<string>> commands;
+            
         public event PropertyChangedEventHandler PropertyChanged;
 
         private IPEndPoint endP;
@@ -38,7 +44,7 @@ namespace ClientProgram
         {
             if (this.client != null)
             {
-                
+               // this.PositionUpdate += (str) => this.UpdatePosition(str);
                 Socket clientSocket = this.client.Client;
                 // checking if the socket is available
                 bool isSocketAvailable = clientSocket.Poll(1000, SelectMode.SelectRead);
@@ -66,6 +72,12 @@ namespace ClientProgram
                 } while (this.stream.DataAvailable);
                 //printing the message to the client
                 MessageReceived(result.ToString());
+                if (Commands.ContainsKey(this.command))
+                {
+                    Commands[this.command](result.ToString());
+                }
+               
+                
             }
         }
 
@@ -84,7 +96,19 @@ namespace ClientProgram
         /// <param name="s"> the command string</param>
         public void sendCommand(string s)
         {
-            this.swriter.WriteLine(s);
+            string[] arr = s.Split(' ');
+            this.command = arr[0];
+            if (command.Equals("smove"))
+            {
+                this.UpdatePosition(arr[1]);
+            }
+            else
+            {
+               // this.command = s;
+                this.swriter.WriteLine(s);
+            }
+
+           
         }
         /// <summary>
         /// connecting to the server
@@ -113,7 +137,46 @@ namespace ClientProgram
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
         }
 
+        public void UpdateMaze (string maze)
+        {
+            MazeLib.Maze m = MazeLib.Maze.FromJSON(maze);
+            this.MyMaze = m;
+            this.NotifyPropertyChanged("MyMaze");
+        }
+        public void UpdatePosition (string direction)
+        {
+            if (direction.Equals("up") 
+                && this.MyMaze[this.PlayerPosition.Row + 1, this.PlayerPosition.Col] == MazeLib.CellType.Free)
+            {
+                this.PlayerPosition = new MazeLib.Position(this.PlayerPosition.Row + 1, this.PlayerPosition.Col);
+                
+            }
+            if(direction.Equals("down")
+                && this.MyMaze[this.PlayerPosition.Row - 1, this.PlayerPosition.Col] == MazeLib.CellType.Free)
+            {
+                this.PlayerPosition = new MazeLib.Position(this.PlayerPosition.Row - 1, this.PlayerPosition.Col);
+                
+            }
+            if (direction.Equals("left")
+                && this.MyMaze[this.PlayerPosition.Row, this.PlayerPosition.Col - 1] == MazeLib.CellType.Free)
+            {
+                this.PlayerPosition = new MazeLib.Position(this.PlayerPosition.Row , this.PlayerPosition.Col - 1);
+                
+            }
+            if (direction.Equals("right")
+                && this.MyMaze[this.PlayerPosition.Row, this.PlayerPosition.Col + 1] == MazeLib.CellType.Free)
+            {
+                this.PlayerPosition = new MazeLib.Position(this.PlayerPosition.Row, this.PlayerPosition.Col + 1);
+                
+            }
+            this.NotifyPropertyChanged("PlayerPosition");
 
+        }
+        public void UpdatePositionFromJson(string json)
+        {
+            string[] arr = json.Split('\"');
+            this.UpdatePosition(arr[7]);
+        }
     }
 }
 

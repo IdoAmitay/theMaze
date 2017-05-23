@@ -9,11 +9,17 @@ namespace MazeGUI
 {
     interface IMvvmModel : INotifyPropertyChanged
     {
-         bool IsConnected();
+        Dictionary<string, Action<string>> Commands { get; set; }
+        MazeLib.Maze MyMaze { get; set; }
+        MazeLib.Position PlayerPosition { get; set; }
+        bool IsConnected();
         void CommunicateWithServer();
         void Close();
         void sendCommand(string s);
         void ConnectToserver();
+        void UpdatePositionFromJson(string json);
+        void UpdatePosition(string direction);
+        void UpdateMaze(string maze);
 
 
 

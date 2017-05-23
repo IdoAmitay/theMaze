@@ -19,36 +19,50 @@ namespace MazeGUI
             // this.model.sendCommand("play " + direction);
              //this.model.sendCommand
          }*/
-        SinglePlayerModel model;
+        // SinglePlayerModel model;
+        IMvvmModel model;
         private string name;
         private int rows;
         private int cols;
 
-        public SinglePlayerVM(SinglePlayerModel model)
+        public SinglePlayerVM()
         {
-            this.model = model;
+            this.model = new ClientProgram.Client();
             this.model.PropertyChanged +=
                 delegate (Object sender, PropertyChangedEventArgs e)
                 {
                     NotifyPropertyChanged("VM_" + e.PropertyName);
                 };
+            Dictionary<string, Action<string>> c = new Dictionary<string, Action<string>>();
+            c.Add("generate", this.model.UpdateMaze);
+            c.Add("start", this.model.UpdateMaze);
+            c.Add("join", this.model.UpdateMaze);
+            c.Add("start", this.model.UpdateMaze);
+            c.Add("play", this.model.UpdatePositionFromJson);
+            c.Add("close", this.model.UpdateMaze);
+            this.model.Commands = c;
+
+
+
+
+
         }
 
         public string VM_MazeName
         {
-            get { return this.model.MazeName; }
+            get { return this.model.MyMaze.Name; }
             set { /*this.model.MazeName = value; */}
         }
 
         public int VM_MazeRows
         {
-            get { return this.model.MazeRows; }
+            get { return this.model.MyMaze.Rows; }
             set { /*this.rows = value;*/ }
         }
 
         public int VM_MazeCols
         {
-            get { return this.model.MazeCols; }
+            get { return this.model.MyMaze.Cols; }
             set { /*this.cols = value;*/ }
         }
 
@@ -58,21 +72,21 @@ namespace MazeGUI
             set { }
         }
 
-        public Position VM_InitialPos
+        public  MazeLib.Position VM_InitialPos
         {
-            get { return this.model.InitialPos; }
+            get { return this.model.MyMaze.InitialPos; }
             set { }
         }
 
-        public Position VM_GoalPos
+        public MazeLib.Position VM_GoalPos
         {
-            get { return this.model.GoalPos; }
+            get { return this.model.MyMaze.GoalPos; }
             set { }
         }
 
-        public Position VM_CurPos
+        public MazeLib.Position VM_CurPos
         {
-            get { return this.model.CurPos; }
+            get { return this.model.PlayerPosition; }
             set { }
         }
 
