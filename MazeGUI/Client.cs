@@ -12,8 +12,6 @@ using System.ComponentModel;
 
 namespace ClientProgram
 {
-
-
     ///<summary>
     ///a client class
     ///holds the end point of communication, the tcp client, the stream and the binary writet
