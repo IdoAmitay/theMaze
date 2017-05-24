@@ -9,7 +9,7 @@ using MazeGeneratorLib;
 
 namespace MazeGUI
 {
-    class SinglePlayerModel : ViewModel
+    class SinglePlayerModel
     {
         public SinglePlayerModel(/*string name, int rows, int cols*/)
         {
@@ -23,7 +23,6 @@ namespace MazeGUI
         {
             if (this.PropertyChanged != null)
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
-            //this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
         }
 
         private string mazeName;
@@ -97,6 +96,17 @@ namespace MazeGUI
             set
             {
                 NotifyPropertyChanged("CurPos");
+            }
+        }
+
+        private Maze maze;
+        public Maze Maze
+        {
+            get { return maze; }
+            set
+            {
+                maze = value;
+                NotifyPropertyChanged("Maze");
             }
         }
 

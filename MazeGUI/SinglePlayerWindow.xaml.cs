@@ -23,6 +23,7 @@ namespace MazeGUI
     {
         
         private SinglePlayerVM vm;
+        private TheMazeBoard board;
         int MazeRows
         {
             get
@@ -35,18 +36,20 @@ namespace MazeGUI
             {
                 return vm.VM_MazeName;
             }
+            set
+            {
+                this.vm.VM_MazeName = value;
+            }
         }
         public SinglePlayerWindow(string name, int rows, int cols)
         {
             InitializeComponent();
-            vm = new SinglePlayerVM(/*new SinglePlayerModel(name, rows, cols)*/);
+            vm = new SinglePlayerVM();
             this.DataContext = vm;
             vm.CrerateMaze(name, rows, cols);
-            TheMazeBoard board = new TheMazeBoard(name,rows,cols);
-            Thread.Sleep(1);
-            board.BringIntoView();
-            board.Draw(vm.VM_MazeString);
-           
+            
+
+
         }
 
         private void btnRestartGame_Click(object sender, RoutedEventArgs e)
@@ -70,9 +73,12 @@ namespace MazeGUI
         }
 
 
-        private void myCanvasSingle_Loaded(object sender, RoutedEventArgs e)
+        private void singleGame_Loaded(object sender, RoutedEventArgs e)
         {
-            //myCanvasSingle.Draw(vm.VM_MazeString);
+
+            //Thread.Sleep(1);
+            this.board = new TheMazeBoard(this.vm.VM_MazeName, this.vm.VM_MazeRows, this.vm.VM_MazeCols, this.vm.VM_CurPos, this.vm.VM_GoalPos);
+            this.board.Draw(vm.VM_MazeString);
 
         }
 

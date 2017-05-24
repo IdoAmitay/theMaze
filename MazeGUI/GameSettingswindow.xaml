@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MazeGUI"
         mc:Ignorable="d"
-        Title="GameSettingswindow" Height="650" Width="600"
+        Title="GameSettingswindow" Height="600" Width="600"
 WindowStartupLocation="CenterScreen">
-    <Grid Margin="30,20,40,40" TextBlock.FontSize="14">
+    <Grid Margin="30,20,40,40" TextBlock.FontSize="14" TextBlock.FontStyle="Italic">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -20,8 +20,8 @@ WindowStartupLocation="CenterScreen">
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock>Server IP:</TextBlock>
-        <TextBox x:Name="txtIP" Grid.Column="1" Text="{Binding Path= ServerIP, Mode=TwoWay}"></TextBox>
+        <TextBlock> Server IP:</TextBlock>
+        <TextBox x:Name="txtIP" Grid.Column="1"  Text="{Binding Path= ServerIP, Mode=TwoWay}"></TextBox>
         <TextBlock Grid.Row="1">Server Port:</TextBlock>
         <TextBox x:Name="txtPort" Grid.Row="1" Grid.Column="2" Text="{Binding Path=ServerPort, Mode=TwoWay}"></TextBox>
         <TextBlock Grid.Row="2">Maze rows:</TextBlock>
@@ -35,9 +35,9 @@ SelectedIndex="{Binding SearchAlgorithm, Mode=OneWay}" IsEditable="False" Margin
             <ComboBoxItem>DFS</ComboBoxItem>
             <ComboBox Width="120"/>
         </ComboBox>
-        <Button x:Name="btnOk" Grid.Row="5" HorizontalAlignment="Center" BorderBrush="Goldenrod" Background="LightGoldenrodYellow"
+        <Button x:Name="btnOk" Grid.Row="5" HorizontalAlignment="Center" TextBlock.FontStyle="Italic" BorderBrush="Goldenrod" Background="LightGoldenrodYellow"
 Grid.ColumnSpan="1" Click="btnOK_Click" Margin="5" Padding="5">OK</Button>
-        <Button x:Name="btnCancel" Grid.Row="5" HorizontalAlignment="Center" BorderBrush="Goldenrod" Background="LightGoldenrodYellow"
+        <Button x:Name="btnCancel" Grid.Row="5" HorizontalAlignment="Center" TextBlock.FontStyle="Italic" BorderBrush="Goldenrod" Background="LightGoldenrodYellow"
 Grid.ColumnSpan="2" Click="btnCancel_Click" Margin="5" Padding="5">Cancel</Button>
     </Grid>
 </Window>

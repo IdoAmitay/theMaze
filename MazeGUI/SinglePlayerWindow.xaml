@@ -6,12 +6,17 @@
         xmlns:local="clr-namespace:MazeGUI"
         xmlns:Controls ="clr-namespace:MazeGUI"
         mc:Ignorable="d"
-        Title="SinglePlayerWindow" Height="650" Width="600" WindowStartupLocation="CenterScreen">
+        Title="SinglePlayerWindow" Height="600" Width="600" WindowStartupLocation="CenterScreen">
     <Canvas>
-        <Button Canvas.Left="180" Canvas.Top="20" Content="Restart game" Background="LightGoldenrodYellow" Click="btnRestartGame_Click" />
-        <Button Canvas.Left="265" Canvas.Top="20" Content="Solve maze" Background="LightGoldenrodYellow" Click="btnSolveMaze_Click" />
-        <Button Canvas.Left="340" Canvas.Top="20" Content="Main menu" Background="LightGoldenrodYellow" Click="btnMainMenu_Click" />
-        
+        <Button Canvas.Left="180" Canvas.Top="20" Content="Restart game" TextBlock.FontStyle="Italic" BorderBrush="Goldenrod" Background="LightGoldenrodYellow" Click="btnRestartGame_Click" />
+        <Button Canvas.Left="265" Canvas.Top="20" Content="Solve maze"  TextBlock.FontStyle="Italic" BorderBrush="Goldenrod" Background="LightGoldenrodYellow" Click="btnSolveMaze_Click" />
+        <Button Canvas.Left="340" Canvas.Top="20" Content="Main menu" TextBlock.FontStyle="Italic" BorderBrush="Goldenrod" Background="LightGoldenrodYellow" Click="btnMainMenu_Click" />
+        <StackPanel Orientation="Horizontal">
+            <Controls:TheMazeBoard x:Name="myCanvasSingle"  Height="400" Width="400" Loaded="singleGame_Loaded"
+                            HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="0,0,0,0" Margin="94,65,40,0" 
+                            MazeName="{Binding VM_MazeName}" MazeRows="{Binding VM_MazeRows}" MazeCols="{Binding VM_MazeCols}" 
+                            InitialPos="{Binding VM_InitialPos}" GoalPos="{Binding VM_GoalPos}"/>
+        </StackPanel>
     </Canvas>
 
 

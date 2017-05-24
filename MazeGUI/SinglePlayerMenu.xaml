@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MazeGUI"
         mc:Ignorable="d"
-        Title="SinglePlayerMenu" Height="650" Width="600"
+        Title="SinglePlayerMenu" Height="600" Width="600"
 WindowStartupLocation="CenterScreen">
     <Grid Margin="30,20,40,40" TextBlock.FontSize="14">
         <Grid.RowDefinitions>

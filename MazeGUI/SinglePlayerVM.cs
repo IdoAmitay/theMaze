@@ -46,11 +46,25 @@ namespace MazeGUI
             this.model.Commands = c;
 
         }
-
+        public MazeLib.Maze VM_Maze
+        {
+            get
+            {
+                return this.model.MyMaze;
+            }
+            set
+            {
+                this.model.MyMaze = value;
+                NotifyPropertyChanged("MyMaze");
+            }
+        }
         public string VM_MazeName
         {
             get { return this.model.MyMaze.Name; }
-            set { /*this.model.MazeName = value; */}
+            set {
+                this.model.MyMaze.Name = value;
+                NotifyPropertyChanged("MazeName");
+            }
         }
 
         public int VM_MazeRows
@@ -91,7 +105,10 @@ namespace MazeGUI
         public string VM_MazeString
         {
             get { return this.model.MyMaze.ToString(); }
-            set { }
+            set
+            {
+                
+            }
         }
         public void CrerateMaze (string name, int rows , int cols) 
         {

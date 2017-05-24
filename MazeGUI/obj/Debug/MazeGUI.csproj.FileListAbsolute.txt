@@ -26,7 +26,6 @@ C:\Users\User\Documents\Visual Studio 2017\Projects\MazeGUI\MazeGUI\bin\Debug\Se
 C:\Users\User\Documents\Visual Studio 2017\Projects\MazeGUI\MazeGUI\obj\Debug\GameSettingswindow.baml
 C:\Users\User\Documents\Visual Studio 2017\Projects\MazeGUI\MazeGUI\obj\Debug\TheMazeBoard.baml
 C:\Users\User\Documents\Visual Studio 2017\Projects\MazeGUI\MazeGUI\obj\Debug\MyMaze.g.cs
-C:\Users\User\Documents\Visual Studio 2017\Projects\MazeGUI\theMaze\MazeGUI\obj\Debug\MazeGUI.csprojResolveAssemblyReference.cache
 C:\Users\User\Documents\Visual Studio 2017\Projects\MazeGUI\theMaze\MazeGUI\obj\Debug\GameSettingswindow.g.cs
 C:\Users\User\Documents\Visual Studio 2017\Projects\MazeGUI\theMaze\MazeGUI\obj\Debug\MainWindow.g.cs
 C:\Users\User\Documents\Visual Studio 2017\Projects\MazeGUI\theMaze\MazeGUI\obj\Debug\SinglePlayerWindow.g.cs
@@ -42,9 +41,6 @@ C:\Users\User\Documents\Visual Studio 2017\Projects\MazeGUI\theMaze\MazeGUI\bin\
 C:\Users\User\Documents\Visual Studio 2017\Projects\MazeGUI\theMaze\MazeGUI\bin\Debug\MazeGUI.pdb
 C:\Users\User\Documents\Visual Studio 2017\Projects\MazeGUI\theMaze\MazeGUI\bin\Debug\Newtonsoft.Json.dll
 C:\Users\User\Documents\Visual Studio 2017\Projects\MazeGUI\theMaze\MazeGUI\bin\Debug\Newtonsoft.Json.xml
-C:\Users\User\Documents\Visual Studio 2017\Projects\MazeGUI\theMaze\MazeGUI\bin\Debug\Priority Queue.pdb
-C:\Users\User\Documents\Visual Studio 2017\Projects\MazeGUI\theMaze\MazeGUI\bin\Debug\Priority Queue.xml
-C:\Users\User\Documents\Visual Studio 2017\Projects\MazeGUI\theMaze\MazeGUI\bin\Debug\SearchAlgorithmsLib.pdb
 C:\Users\User\Documents\Visual Studio 2017\Projects\MazeGUI\theMaze\MazeGUI\obj\Debug\GameSettingswindow.baml
 C:\Users\User\Documents\Visual Studio 2017\Projects\MazeGUI\theMaze\MazeGUI\obj\Debug\MainWindow.baml
 C:\Users\User\Documents\Visual Studio 2017\Projects\MazeGUI\theMaze\MazeGUI\obj\Debug\SinglePlayerMenu.baml
@@ -53,3 +49,5 @@ C:\Users\User\Documents\Visual Studio 2017\Projects\MazeGUI\theMaze\MazeGUI\obj\
 C:\Users\User\Documents\Visual Studio 2017\Projects\MazeGUI\theMaze\MazeGUI\obj\Debug\MazeGUI.g.resources
 C:\Users\User\Documents\Visual Studio 2017\Projects\MazeGUI\theMaze\MazeGUI\obj\Debug\MazeGUI.Properties.Resources.resources
 C:\Users\User\Documents\Visual Studio 2017\Projects\MazeGUI\theMaze\MazeGUI\obj\Debug\MazeGUI.csproj.GenerateResource.Cache
+C:\Users\User\Documents\Visual Studio 2017\Projects\MazeGUI\theMaze\MazeGUI\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\User\Documents\Visual Studio 2017\Projects\MazeGUI\theMaze\MazeGUI\obj\Debug\MazeGUI.csprojResolveAssemblyReference.cache

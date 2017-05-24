@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MazeLib;
 
 namespace MazeGUI
 {
@@ -20,13 +21,22 @@ namespace MazeGUI
     /// </summary>
     public partial class TheMazeBoard : UserControl
     {
-        public  TheMazeBoard(string name, int rows, int cols )
+        public TheMazeBoard()
+        {
+            InitializeComponent();
+        }
+
+        public  TheMazeBoard(string name, int rows, int cols, Position curPos, Position goalPos)
         {
             InitializeComponent();
             MazeCols = cols;
             MazeRows = rows;
             MazeName = name;
+            CurPos = curPos;
+            GoalPos = goalPos;
         }
+
+        
 
         public string MazeName
         {
@@ -62,9 +72,9 @@ namespace MazeGUI
             DependencyProperty.Register("MazeCols", typeof(int), typeof(TheMazeBoard));
 
 
-        public string InitialPos
+        public Position InitialPos
         {
-            get { return (string)GetValue(InitialPosProperty); }
+            get { return (Position)GetValue(InitialPosProperty); }
             set { SetValue(InitialPosProperty, value); }
         }
 
@@ -72,10 +82,20 @@ namespace MazeGUI
         public static readonly DependencyProperty InitialPosProperty =
             DependencyProperty.Register("InitialPos", typeof(string), typeof(TheMazeBoard));
 
-
-        public string GoalPos
+        public Position CurPos
         {
-            get { return (string)GetValue(GoalPosProperty); }
+            get { return (Position)GetValue(CurPosProperty); }
+            set { SetValue(CurPosProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for GoalPos.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty CurPosProperty =
+            DependencyProperty.Register("CurPos", typeof(string), typeof(TheMazeBoard));
+
+
+        public Position GoalPos
+        {
+            get { return (Position)GetValue(GoalPosProperty); }
             set { SetValue(GoalPosProperty, value); }
         }
 
@@ -87,51 +107,64 @@ namespace MazeGUI
 
         public void Draw(string recsStr)
         {
-            int rectindex = 0;
-            for (int i = 0; i < MazeRows - 1; i++)
+            int recindex = 0;
+            for (int i = 0; i < MazeRows; i++)
             {
-                for (int j = 0; j < MazeCols - 1; j++)
+                for (int j = 0; j < MazeCols; j++)
                 {
-                    Rectangle rect = new Rectangle()
+                    Rectangle rec = new Rectangle()
                     {
-                        Height = 100,
-                        Width = 100,
+                        Height = (this.ActualHeight / MazeRows),
+                        Width = (this.ActualWidth / MazeCols),
                         Fill = Brushes.White,
                         Stroke = Brushes.Black,
-                        StrokeThickness = 1
+                        StrokeThickness = 2
                     };
-                    //rec.Height = 150;
-                    //rec.Width = 150;
 
-                    if (recsStr[rectindex] == '1')
-                        rect.Fill = Brushes.Black;
-                    else if (recsStr[rectindex] == '0')
-                        rect.Fill = Brushes.White;
-                    else if (recsStr[rectindex] == '*')
-                        rect.Fill = Brushes.Red;
-                    else
-                        rect.Fill = Brushes.Blue;
+                    while (recsStr[recindex] != '1' && recsStr[recindex] != '0'
+                        && recsStr[recindex] != '#' && recsStr[recindex] != '*')
+                    {
+                        recindex++;
+                    }
 
-                    //rec.Stroke = new SolidColorBrush(Colors.Black);
+                    if (recsStr[recindex] == '1')
+                        rec.Fill = Brushes.DarkSeaGreen;
+                    else if (recsStr[recindex] == '0')
+                        rec.Fill = Brushes.LightSkyBlue;
 
-                    Canvas.SetTop(rect, i * rect.Height);
-                    Canvas.SetLeft(rect, j * rect.Width);
-                    myCanvas.Children.Add(rect);
-
-
-                    rectindex++;
+                    Canvas.SetTop(rec, i * rec.Height);
+                    Canvas.SetLeft(rec, j * rec.Width);
+                    myCanvas.Children.Add(rec);
+                    recindex++;
                 }
             }
-            Rectangle r = new Rectangle()
+
+            Rectangle recInit = new Rectangle()
             {
-                Height = 100,
-                Width = 100,
-                Fill = Brushes.White,
+                Height = (this.ActualHeight / MazeRows),
+                Width = (this.ActualWidth / MazeCols),
+                Fill = new ImageBrush(new BitmapImage(new Uri(@"resources\harry potter.jpg", UriKind.Relative))),
                 Stroke = Brushes.Black,
-                StrokeThickness = 3
+                StrokeThickness = 2
             };
-            Canvas.SetBottom(r, 100);
-            myCanvas.Children.Add(r);
+
+            Canvas.SetTop(recInit, CurPos.Row * recInit.Height);
+            Canvas.SetLeft(recInit, CurPos.Col * recInit.Width);
+            myCanvas.Children.Add(recInit);
+
+            Rectangle recGoal = new Rectangle()
+            {
+                Height = (this.ActualHeight / MazeRows),
+                Width = (this.ActualWidth / MazeCols),
+                Fill = new ImageBrush(new BitmapImage(new Uri(@"resources\snitch 2.jpg", UriKind.Relative))),
+                Stroke = Brushes.Black,
+                StrokeThickness = 2
+            };
+
+            Canvas.SetTop(recGoal, GoalPos.Row * recGoal.Height);
+            Canvas.SetLeft(recGoal, GoalPos.Col * recGoal.Width);
+            myCanvas.Children.Add(recGoal);
+
         }
     }
 }

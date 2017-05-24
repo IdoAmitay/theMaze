@@ -9,6 +9,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
+using MazeLib;
 
 namespace ClientProgram
 {
@@ -18,10 +19,101 @@ namespace ClientProgram
     ///</summary>
     class Client : IMvvmModel
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+        private Maze maze;
         private static Client instance;
         private string command;
-        public MazeLib.Maze MyMaze { get; set; }
-        public MazeLib.Position PlayerPosition { get; set; }
+        private string mazeName;
+        private int mazeRows;
+        private int mazeCols;
+        private Position playerPosition;
+        private Position goal;
+        private Position start;
+        public int MazeCols
+        {
+            get
+            {
+                return this.mazeCols;
+            }
+            set
+            {
+                this.mazeCols = value;
+                NotifyPropertyChanged("MazeCols");
+            }
+        }
+        public int MazeRows
+        {
+            get
+            {
+                return this.mazeRows;
+            }
+            set
+            {
+                this.mazeRows = value;
+                NotifyPropertyChanged("MazeRows");
+            }
+        }
+        public Position InitialPos
+        {
+            get
+            {
+                return this.start;
+            }
+            set
+            {
+                this.start = value;
+                NotifyPropertyChanged("InitialPos");
+            }
+        }
+        public Position GoalPos
+        {
+            get
+            {
+                return this.goal;
+            }
+            set
+            {
+                this.goal = value;
+                NotifyPropertyChanged("GoalPos");
+            }
+        }
+        public Maze MyMaze
+        {
+            get
+            {
+                return this.maze;
+            }
+            set
+            {
+                this.maze = value;
+                NotifyPropertyChanged("MyMaze");
+            }
+        }
+        public string MazeName
+        {
+            get
+            {
+              return  this.mazeName;
+            }
+            set
+            {
+                this.mazeName = value;
+                NotifyPropertyChanged("MazeName");
+            }
+        }
+        public Position PlayerPosition
+        {
+            get
+            {
+                return this.playerPosition;
+            }
+            set
+            {
+                this.playerPosition = value;
+                NotifyPropertyChanged("PlayerPosition");
+            }
+        }
+    
         public Dictionary<string, Action<string>> Commands { get ; set ; }
         public string Solution { get ; set ; }
 
@@ -30,7 +122,6 @@ namespace ClientProgram
         //public event Action<string> PositionUpdate;
        // private Dictionary<string, Action<string>> commands;
             
-        public event PropertyChangedEventHandler PropertyChanged;
 
         private IPEndPoint endP;
         private TcpClient client;
@@ -145,7 +236,10 @@ namespace ClientProgram
             // MazeLib.Maze mazeTemp = new MazeLib.Maze();
             // MazeLib.Maze m = MazeLib.Maze.FromJSON(maze);
             // MyMaze = m;
-            MyMaze = new MazeLib.Maze(3, 3);
+            //MyMaze = new Maze(4,4);
+            Console.WriteLine(maze);
+            this.maze = Maze.FromJSON(maze);
+            this.MyMaze = Maze.FromJSON(maze);
             this.NotifyPropertyChanged("MyMaze");
         }
         public void UpdatePosition (string direction)

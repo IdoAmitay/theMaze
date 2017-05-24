@@ -5,23 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MazeGUI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="650" Width="600" Background="MidnightBlue"
-WindowStartupLocation="CenterScreen">
-    <Grid Margin="-265,-250,-454,-201" Height="930" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="1284" RenderTransformOrigin="0.51,0.509">
-        <Button Content="Single Player" HorizontalAlignment="Left" Margin="517,375,0,0" VerticalAlignment="Top" Width="75" TextBlock.FontStyle="Italic" BorderBrush="Goldenrod" Background="LightGoldenrodYellow" RenderTransformOrigin="-1.307,2.7" Click="Button_Click_Single"/>
-        <Button Content="Multi Player" HorizontalAlignment="Left" Margin="517,400,0,0" VerticalAlignment="Top" Width="75" TextBlock.FontStyle="Italic" BorderBrush="Goldenrod" Background="LightGoldenrodYellow" RenderTransformOrigin="-1.307,2.7"/>
-        <Button Content="Settings" HorizontalAlignment="Left" Margin="517,425,0,0" VerticalAlignment="Top" Width="75" TextBlock.FontStyle="Italic" BorderBrush="Goldenrod" Background="LightGoldenrodYellow" RenderTransformOrigin="-1.307,2.7" Click="Button_Click_Settings"/>
+        Title="MainWindow" Height="600" Width="600" WindowStartupLocation="CenterScreen" >
+    <Grid Margin="-265,-160,-297,-201" Height="930" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="1154" RenderTransformOrigin="0.51,0.509">
+        <Image Source="bin\Debug\images\HarryPotter.png" Margin="256,-425,282,-110"/>
+        <Button Content="Single Player" HorizontalAlignment="Left" Margin="517,425,0,0" VerticalAlignment="Top" Width="75" TextBlock.FontStyle="Italic" BorderBrush="Goldenrod" Background="LightGoldenrodYellow" RenderTransformOrigin="-1.307,2.7" Click="Button_Click_Single"/>
+        <Button Content="Multi Player" HorizontalAlignment="Left" Margin="517,450,0,0" VerticalAlignment="Top" Width="75" TextBlock.FontStyle="Italic" BorderBrush="Goldenrod" Background="LightGoldenrodYellow" RenderTransformOrigin="-1.307,2.7"/>
+        <Button Content="Settings" HorizontalAlignment="Left" Margin="517,475,0,0" VerticalAlignment="Top" Width="75" TextBlock.FontStyle="Italic" BorderBrush="Goldenrod" Background="LightGoldenrodYellow" RenderTransformOrigin="-1.307,2.7" Click="Button_Click_Settings"/>
         <Label Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        <Label Content="The Great Daniela Maze!!!!" HorizontalAlignment="Left" Margin="416,285,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" FontWeight="Bold" FontSize="22">
-            <Label.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="0.145"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Label.RenderTransform>
-        </Label>
-
     </Grid>
 </Window>

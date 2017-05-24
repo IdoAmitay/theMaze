@@ -8,7 +8,7 @@
              d:DesignHeight="400" d:DesignWidth="400">
 
     <Viewbox>
-        <Border BorderBrush="Black" BorderThickness="3">
+        <Border BorderBrush="Goldenrod" BorderThickness="4">
             <Canvas x:Name="myCanvas" Width="400" Height="400">
 
             </Canvas>
