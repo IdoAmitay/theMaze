@@ -20,9 +20,12 @@ namespace MazeGUI
     /// </summary>
     public partial class TheMazeBoard : UserControl
     {
-        public  TheMazeBoard()
+        public  TheMazeBoard(string name, int rows, int cols )
         {
             InitializeComponent();
+            MazeCols = cols;
+            MazeRows = rows;
+            MazeName = name;
         }
 
         public string MazeName
@@ -85,9 +88,9 @@ namespace MazeGUI
         public void Draw(string recsStr)
         {
             int rectindex = 0;
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < MazeRows - 1; i++)
             {
-                for (int j = 0; j < 3; j++)
+                for (int j = 0; j < MazeCols - 1; j++)
                 {
                     Rectangle rect = new Rectangle()
                     {
@@ -95,7 +98,7 @@ namespace MazeGUI
                         Width = 100,
                         Fill = Brushes.White,
                         Stroke = Brushes.Black,
-                        StrokeThickness = 2
+                        StrokeThickness = 1
                     };
                     //rec.Height = 150;
                     //rec.Width = 150;

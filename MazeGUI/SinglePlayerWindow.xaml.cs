@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MazeLib;
+using System.Threading;
 
 namespace MazeGUI
 {
@@ -41,6 +42,10 @@ namespace MazeGUI
             vm = new SinglePlayerVM(/*new SinglePlayerModel(name, rows, cols)*/);
             this.DataContext = vm;
             vm.CrerateMaze(name, rows, cols);
+            TheMazeBoard board = new TheMazeBoard(name,rows,cols);
+            Thread.Sleep(1);
+            board.BringIntoView();
+            board.Draw(vm.VM_MazeString);
            
         }
 
@@ -53,12 +58,11 @@ namespace MazeGUI
 
         private void btnSolveMaze_Click(object sender, RoutedEventArgs e)
         {
-            SinglePlayerMenu sp = new SinglePlayerMenu();////////////////////
-            sp.Show();
+            this.vm.SolveMaze();
             this.Hide();
         }
 
-        private void BbtnMainMenu_Click(object sender, RoutedEventArgs e)
+        private void btnMainMenu_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mw = new MainWindow();
             mw.Show();
@@ -69,12 +73,9 @@ namespace MazeGUI
         private void myCanvasSingle_Loaded(object sender, RoutedEventArgs e)
         {
             //myCanvasSingle.Draw(vm.VM_MazeString);
-            
-        }
-
-        private void btnMainMenu_Click(object sender, RoutedEventArgs e)
-        {
 
         }
+
+       
     }
 }

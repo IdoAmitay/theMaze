@@ -99,7 +99,8 @@ namespace MazeGUI
             this.name = name;
             this.rows = rows;
             this.cols = cols;
-            NotifyPropertyChanged("MyMaze"); /////////
+            
+           // NotifyPropertyChanged("MyMaze"); /////////
         }
         public void SolveMaze()
         {
@@ -131,7 +132,7 @@ namespace MazeGUI
         public void Move (string direction)
         {
             this.model.TalkWithServer("smove " + direction);
-            NotifyPropertyChanged("PlayerPosition");
+          //  NotifyPropertyChanged("PlayerPosition");
         }
 
     }

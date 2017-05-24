@@ -74,7 +74,7 @@ namespace ClientProgram
                     result.Append(this.breader.ReadString());
                 } while (this.stream.DataAvailable);
                 //printing the message to the client
-                MessageReceived(result.ToString());
+                //MessageReceived(result.ToString());
                 if (Commands.ContainsKey(this.command))
                 {
                     Commands[this.command](result.ToString());
@@ -119,8 +119,8 @@ namespace ClientProgram
         public void ConnectToserver()
         {
             //defining the port,ip and end point
-            string s = ConfigurationManager.AppSettings["ServerIP"].ToString();
-            int port = int.Parse(ConfigurationManager.AppSettings["ServerPort"].ToString());
+            string s = ConfigurationManager.AppSettings["server"].ToString();
+            int port = int.Parse(ConfigurationManager.AppSettings["port"].ToString());
             this.endP = new IPEndPoint(IPAddress.Parse(s), port);
             //closing the previous connection with the server
             if (this.client != null)
@@ -142,8 +142,10 @@ namespace ClientProgram
 
         public void UpdateMaze (string maze)
         {
-            MazeLib.Maze m = MazeLib.Maze.FromJSON(maze);
-            this.MyMaze = m;
+            // MazeLib.Maze mazeTemp = new MazeLib.Maze();
+            // MazeLib.Maze m = MazeLib.Maze.FromJSON(maze);
+            // MyMaze = m;
+            MyMaze = new MazeLib.Maze(3, 3);
             this.NotifyPropertyChanged("MyMaze");
         }
         public void UpdatePosition (string direction)
@@ -183,7 +185,7 @@ namespace ClientProgram
         public void UpdateSolution (string json)
         {
             string[] arr = json.Split('\"');
-            this.Solution = arr[7];
+            Solution = arr[7];
             NotifyPropertyChanged("Solution");
         }
         public static Client Instance
