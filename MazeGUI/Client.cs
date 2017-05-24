@@ -18,10 +18,12 @@ namespace ClientProgram
     ///</summary>
     class Client : IMvvmModel
     {
+        private static Client instance;
         private string command;
         public MazeLib.Maze MyMaze { get; set; }
         public MazeLib.Position PlayerPosition { get; set; }
         public Dictionary<string, Action<string>> Commands { get ; set ; }
+        public string Solution { get ; set ; }
 
         public event Action<String> MessageReceived;
        // public event Action<string> MazeUpdate;
@@ -35,6 +37,7 @@ namespace ClientProgram
         private NetworkStream stream;
         private BinaryReader breader;
         private StreamWriter swriter;
+        private Client() { }
 
         /// <summary>
         /// checks if the client is connected to the server
@@ -176,6 +179,34 @@ namespace ClientProgram
         {
             string[] arr = json.Split('\"');
             this.UpdatePosition(arr[7]);
+        }
+        public void UpdateSolution (string json)
+        {
+            string[] arr = json.Split('\"');
+            this.Solution = arr[7];
+            NotifyPropertyChanged("Solution");
+        }
+        public static Client Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new Client();
+                }
+                return instance;
+            }
+        }
+        public void TalkWithServer (string myCommand)
+        {
+            //checking if the client is connected
+            if (!this.IsConnected())
+            {
+                //connecting the client
+                this.ConnectToserver();
+                new Task(this.CommunicateWithServer).Start();
+            }
+            this.sendCommand(myCommand);
         }
     }
 }

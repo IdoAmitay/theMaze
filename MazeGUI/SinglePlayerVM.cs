@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,9 +26,10 @@ namespace MazeGUI
         private int rows;
         private int cols;
 
-        public SinglePlayerVM()
+        public SinglePlayerVM() 
         {
-            this.model = new ClientProgram.Client();
+            // this.model = new ClientProgram.Client();
+            this.model = ClientProgram.Client.Instance;
             this.model.PropertyChanged +=
                 delegate (Object sender, PropertyChangedEventArgs e)
                 {
@@ -35,16 +37,13 @@ namespace MazeGUI
                 };
             Dictionary<string, Action<string>> c = new Dictionary<string, Action<string>>();
             c.Add("generate", this.model.UpdateMaze);
-            c.Add("start", this.model.UpdateMaze);
+           // c.Add("start", this.model.UpdateMaze);
             c.Add("join", this.model.UpdateMaze);
             c.Add("start", this.model.UpdateMaze);
             c.Add("play", this.model.UpdatePositionFromJson);
             c.Add("close", this.model.UpdateMaze);
+            c.Add("solve", this.model.UpdateSolution);
             this.model.Commands = c;
-
-
-
-
 
         }
 
@@ -66,11 +65,11 @@ namespace MazeGUI
             set { /*this.cols = value;*/ }
         }
 
-        public int VM_SearchAlgorithm
+        /*public int VM_SearchAlgorithm
         {
             get { return this.model.SearchAlgorithm; }
             set { }
-        }
+        }*/
 
         public  MazeLib.Position VM_InitialPos
         {
@@ -88,6 +87,51 @@ namespace MazeGUI
         {
             get { return this.model.PlayerPosition; }
             set { }
+        }
+        public string VM_MazeString
+        {
+            get { return this.model.MyMaze.ToString(); }
+            set { }
+        }
+        public void CrerateMaze (string name, int rows , int cols) 
+        {
+            this.model.TalkWithServer("generate " + name + " " + rows.ToString() + " " + cols.ToString());
+            this.name = name;
+            this.rows = rows;
+            this.cols = cols;
+            NotifyPropertyChanged("MyMaze"); /////////
+        }
+        public void SolveMaze()
+        {
+            this.model.TalkWithServer("solve " + name + " " + ConfigurationManager.AppSettings["Algorithm"].ToString());
+            int i = 0;
+            while (i < this.model.Solution.Length)
+            {
+                int direction = int.Parse(this.model.Solution[i].ToString());
+                string dir;
+                switch (direction)
+                {
+                    case 0:
+                        dir = "left";
+                        break;
+                    case 1:
+                        dir = "right";
+                        break;
+                    case 2:
+                        dir = "up";
+                        break;
+                    default:
+                        dir = "down";
+                        break;
+                }
+                this.Move(dir);
+            }
+           // NotifyPropertyChanged("Solution");
+        }
+        public void Move (string direction)
+        {
+            this.model.TalkWithServer("smove " + direction);
+            NotifyPropertyChanged("PlayerPosition");
         }
 
     }

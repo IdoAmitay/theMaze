@@ -21,22 +21,23 @@ WindowStartupLocation="CenterScreen">
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <TextBlock>Server IP:</TextBlock>
-        <TextBox x:Name="txtIP" Grid.Column="1" Text="{Binding ServerIP, Mode=OneWay}"></TextBox>
+        <TextBox x:Name="txtIP" Grid.Column="1" Text="{Binding Path= ServerIP, Mode=TwoWay}"></TextBox>
         <TextBlock Grid.Row="1">Server Port:</TextBlock>
-        <TextBox x:Name="txtPort" Grid.Row="1" Grid.Column="2" Text="{Binding Path=text,ElementName=txtPort, Mode=OneWay}"></TextBox>
+        <TextBox x:Name="txtPort" Grid.Row="1" Grid.Column="2" Text="{Binding Path=ServerPort, Mode=TwoWay}"></TextBox>
         <TextBlock Grid.Row="2">Maze rows:</TextBlock>
-        <TextBox x:Name="txtRows" Grid.Row="2" Grid.Column="2" Text="{Binding Path = text,ElementName =txtRows, Mode=OneWay}"></TextBox>
+        <TextBox x:Name="txtRows" Grid.Row="2" Grid.Column="2" Text="{Binding Path = MazeRows, Mode=TwoWay}"></TextBox>
         <TextBlock Grid.Row="3">Maze columns:</TextBlock>
-        <TextBox x:Name="txtCols" Grid.Row="3" Grid.Column="2" Text="{Binding MazeCols, Mode=OneWay}"></TextBox>
+        <TextBox x:Name="txtCols" Grid.Row="3" Grid.Column="2" Text="{Binding MazeCols, Mode=TwoWay}"></TextBox>
         <TextBlock Grid.Row="4">Search algorithm:</TextBlock>
-        <ComboBox x:Name="cboSearchAlgo" Grid.Row="4" Grid.Column="2" HorizontalAlignment="Left"
-SelectedIndex="{Binding SearchAlgorithm, Mode=OneWay}" IsEditable="False">
+        <ComboBox x:Name="cboSearchAlgo" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" BorderBrush="Goldenrod" Background="LightGoldenrodYellow"
+SelectedIndex="{Binding SearchAlgorithm, Mode=OneWay}" IsEditable="False" Margin="11,0,0,0" Width="18">
             <ComboBoxItem>BFS</ComboBoxItem>
             <ComboBoxItem>DFS</ComboBoxItem>
+            <ComboBox Width="120"/>
         </ComboBox>
-        <Button x:Name="btnOk" Grid.Row="5" HorizontalAlignment="Center"
+        <Button x:Name="btnOk" Grid.Row="5" HorizontalAlignment="Center" BorderBrush="Goldenrod" Background="LightGoldenrodYellow"
 Grid.ColumnSpan="1" Click="btnOK_Click" Margin="5" Padding="5">OK</Button>
-        <Button x:Name="btnCancel" Grid.Row="5" HorizontalAlignment="Center"
+        <Button x:Name="btnCancel" Grid.Row="5" HorizontalAlignment="Center" BorderBrush="Goldenrod" Background="LightGoldenrodYellow"
 Grid.ColumnSpan="2" Click="btnCancel_Click" Margin="5" Padding="5">Cancel</Button>
     </Grid>
 </Window>

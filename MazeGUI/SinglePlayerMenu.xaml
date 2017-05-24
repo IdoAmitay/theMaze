@@ -20,12 +20,12 @@ WindowStartupLocation="CenterScreen">
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <TextBlock>Maze name:</TextBlock>
-        <TextBox x:Name="txtName" Grid.Column="1" Text="{Binding , Mode=OneWay}"></TextBox>
+        <TextBox x:Name="txtName" Grid.Column="1" Text="{Binding Path = Name, Mode=TwoWay}"></TextBox>
         <TextBlock Grid.Row="2">Maze rows:</TextBlock>
-        <TextBox x:Name="txtRows" Grid.Row="2" Grid.Column="2" Text="{Binding Path = text,ElementName =txtRows, Mode=OneWay}"></TextBox>
+        <TextBox x:Name="txtRows" Grid.Row="2" Grid.Column="2" Text="{Binding Path = Rows, Mode=TwoWay}"></TextBox>
         <TextBlock Grid.Row="3">Maze columns:</TextBlock>
-        <TextBox x:Name="txtCols" Grid.Row="3" Grid.Column="2" Text="{Binding MazeCols, Mode=OneWay}"></TextBox>
+        <TextBox x:Name="txtCols" Grid.Row="3" Grid.Column="2" Text="{Binding Path= Cols, Mode=TwoWay}"></TextBox>
         <Button x:Name="btnOk" Grid.Row="4" HorizontalAlignment="Center"
-Grid.ColumnSpan="2" Click="btnOK_Click" Margin="5" Padding="5">OK</Button>
+Grid.ColumnSpan="2" Click="btnOK_Click"  Margin="5" Padding="5">OK</Button>
     </Grid>
 </Window>

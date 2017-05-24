@@ -45,11 +45,11 @@ namespace MazeGUI
         public int MazeRows
         {
             get { return model.MazeRows; }
-            /*set
+            set
             {
                 model.MazeRows = value;
                 NotifyPropertyChanged("MazeRows");
-            }*/
+            }
         }
 
         // Using a DependencyProperty as the backing store for MazeRows.  This enables animation, styling, binding, etc...
@@ -60,11 +60,11 @@ namespace MazeGUI
         public int MazeCols
         {
             get { return model.MazeCols; }
-            /*set
+            set
             {
                 model.MazeCols = value;
                 NotifyPropertyChanged("MazeCols");
-            }*/
+            }
         }
 
         // Using a DependencyProperty as the backing store for MazeCols.  This enables animation, styling, binding, etc...
@@ -76,11 +76,11 @@ namespace MazeGUI
         public int SearchAlgorithm
         {
             get { return model.SearchAlgorithm; }
-            /*set
+            set
             {
                 model.SearchAlgorithm = value;
                 NotifyPropertyChanged("SearchAlgorithm");
-            }*/
+            }
         }
 
         // Using a DependencyProperty as the backing store for SearchAlgorithm.  This enables animation, styling, binding, etc...

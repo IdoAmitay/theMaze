@@ -27,7 +27,7 @@ namespace MazeGUI
 
         private void Button_Click_Single(object sender, RoutedEventArgs e)
         {
-            SinglePlayer sp = new SinglePlayer();////////////////////
+            SinglePlayerMenu sp = new SinglePlayerMenu();////////////////////
             sp.Show();
             this.Hide();
         }
@@ -40,6 +40,7 @@ namespace MazeGUI
             win.Show();
             //win.ShowDialog();
             this.Close();
+            //jkwrhtkjhtrkwh
         }
     }
 }

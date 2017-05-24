@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,6 +27,7 @@ namespace MazeGUI
             InitializeComponent();
             vm = new SettingsViewModel(model);
             this.DataContext = vm;
+           // ServerIP = ConfigurationManager.AppSettings["ServerIP"];
         }
         private void btnOK_Click(object sender, RoutedEventArgs e)
         {

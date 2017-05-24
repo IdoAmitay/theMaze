@@ -20,18 +20,61 @@ namespace MazeGUI
     /// </summary>
     public partial class SinglePlayerWindow : Window
     {
+        
         private SinglePlayerVM vm;
+        int MazeRows
+        {
+            get
+            {
+                return vm.VM_MazeRows;
+            }
+        }
+        string MazeName {
+            get
+            {
+                return vm.VM_MazeName;
+            }
+        }
         public SinglePlayerWindow(string name, int rows, int cols)
         {
             InitializeComponent();
-            vm = new SinglePlayerVM(new SinglePlayerModel(name, rows, cols));
+            vm = new SinglePlayerVM(/*new SinglePlayerModel(name, rows, cols)*/);
             this.DataContext = vm;
+            vm.CrerateMaze(name, rows, cols);
+           
+        }
+
+        private void btnRestartGame_Click(object sender, RoutedEventArgs e)
+        {
+            SinglePlayerMenu sp = new SinglePlayerMenu();
+            sp.Show();
+            this.Hide();
+        }
+
+        private void btnSolveMaze_Click(object sender, RoutedEventArgs e)
+        {
+            SinglePlayerMenu sp = new SinglePlayerMenu();////////////////////
+            sp.Show();
+            this.Hide();
+        }
+
+        private void BbtnMainMenu_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mw = new MainWindow();
+            mw.Show();
+            this.Hide();
         }
 
 
         private void myCanvasSingle_Loaded(object sender, RoutedEventArgs e)
         {
-            myCanvasSingle.Draw("*0100110001#");
+            //myCanvasSingle.Draw(vm.VM_MazeString);
+            
+        }
+
+        private void btnMainMenu_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

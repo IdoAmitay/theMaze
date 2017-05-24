@@ -76,6 +76,7 @@
     </Compile>
     <Compile Include="IMvvmModel.cs" />
     <Compile Include="ISettingsModel.cs" />
+    <Compile Include="MultiPlayerVM.cs" />
     <Compile Include="Server.cs" />
     <Compile Include="SettingsViewModel.cs" />
     <Compile Include="SinglePlayerMenu.xaml.cs">
