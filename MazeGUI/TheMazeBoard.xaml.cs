@@ -109,10 +109,11 @@ namespace MazeGUI
 
         public void Draw(string recsStr, int rows, int cols, Position curPos, Position goalPos)
         {
+            string s = MazeName;
             int recindex = 0;
-            for (int i = 0; i < MazeRows - 1; i++)
+            for (int i = 0; i < MazeRows ; i++)
             {
-                for (int j = 0; j < MazeCols - 1; j++)
+                for (int j = 0; j < MazeCols ; j++)
                 {
                     Rectangle rec = new Rectangle()
                     {
@@ -145,7 +146,7 @@ namespace MazeGUI
             {
                 Height = (this.ActualHeight / MazeRows),
                 Width = (this.ActualWidth / MazeCols),
-                Fill = new ImageBrush(new BitmapImage(new Uri(@"resources\harry potter.jpg", UriKind.Relative))),
+                Fill = new ImageBrush(new BitmapImage(new Uri(@"resources/harry potter.jpg", UriKind.Relative))),
                 Stroke = Brushes.Black,
                 StrokeThickness = 2
             };
@@ -158,7 +159,7 @@ namespace MazeGUI
             {
                 Height = (this.ActualHeight / MazeRows),
                 Width = (this.ActualWidth / MazeCols),
-                Fill = new ImageBrush(new BitmapImage(new Uri(@"resources\snitch 2.jpg", UriKind.Relative))),
+                Fill = new ImageBrush(new BitmapImage(new Uri(@"resources/snitch 2.jpg", UriKind.Relative))),
                 Stroke = Brushes.Black,
                 StrokeThickness = 2
             };

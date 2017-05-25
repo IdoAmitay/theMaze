@@ -73,8 +73,9 @@ namespace MazeGUI
         private void btnOK_Click(object sender, RoutedEventArgs e)
         {
             Window singlePlayerGame = new SinglePlayerWindow(Name, Rows,Cols);
-            singlePlayerGame.Show();
             this.Close();
+            singlePlayerGame.Show();
+
 
 
         }

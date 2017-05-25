@@ -157,18 +157,20 @@ namespace ClientProgram
         {
             while (IsConnected())
             {
-                String result = "";
+                 //String result = "";
+               StringBuilder result = new StringBuilder();
 
                 do
                 {
                     //appending the server's answer to the last command sent
-                    result += this.breader.ReadString();
+                   // result += this.breader.ReadString();
+                    result.Append(this.breader.ReadString());
                 } while (this.stream.DataAvailable);
                 //printing the message to the client
                 //MessageReceived(result.ToString());
                 if (Commands.ContainsKey(this.command))
                 {
-                    Commands[this.command](result);
+                    Commands[this.command](result.ToString());
                 }
                
                 
@@ -236,20 +238,17 @@ namespace ClientProgram
             // MazeLib.Maze mazeTemp = new MazeLib.Maze();
             // MazeLib.Maze m = MazeLib.Maze.FromJSON(maze);
             // MyMaze = m;
-            MyMaze = new Maze(4,4);
-            // Console.WriteLine(maze);
-           // Maze check = new Maze(4, 4);
-            //string str = check.ToJSON();
-           // this.maze = Maze.FromJSON(check.ToJSON());
-            this.MyMaze = Maze.FromJSON(maze);
-            mazeName = this.MyMaze.Name;
-            MazeRows = this.MyMaze.Rows;
-            mazeCols = this.MyMaze.Cols;
-            InitialPos = this.MyMaze.InitialPos;
-            CurPos = this.initialPos;
-            GoalPos = this.MyMaze.GoalPos;
+            // MyMaze = new Maze(4,4);
+            this.maze = Maze.FromJSON(maze);
+           // MyMaze = Maze.FromJSON(maze);
+           // this.NotifyPropertyChanged("MyMaze");
+            mazeName = MyMaze.Name;
+            MazeRows = MyMaze.Rows;
+            mazeCols = MyMaze.Cols;
+            InitialPos = MyMaze.InitialPos;
+            CurPos = initialPos;
+            GoalPos = MyMaze.GoalPos;
 
-            this.NotifyPropertyChanged("MyMaze");
         }
         public void UpdatePosition (string direction)
         {
@@ -304,14 +303,18 @@ namespace ClientProgram
         }
         public void TalkWithServer (string myCommand)
         {
+            Task task = new Task(this.CommunicateWithServer);
             //checking if the client is connected
             if (!this.IsConnected())
             {
                 //connecting the client
                 this.ConnectToserver();
-                new Task(this.CommunicateWithServer).Start();
+                // new Task(this.CommunicateWithServer).Start();
+                task.Start();
             }
             this.sendCommand(myCommand);
+            task.Wait();
+
         }
     }
 }

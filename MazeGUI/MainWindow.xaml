@@ -11,7 +11,7 @@
         <Grid.Background>
             <SolidColorBrush Color="#0f1a1e" />
         </Grid.Background>
-        <Image Source="bin\Debug\images\HarryPotter.png" Margin="256,-425,282,-110"/>
+        <Image Source="bin\Debug\resources\HarryPotter.png" Margin="256,-425,282,-110"/>
         <Button Content="Single Player" HorizontalAlignment="Left" Margin="517,425,0,0" VerticalAlignment="Top" Width="75" TextBlock.FontStyle="Italic" BorderBrush="Goldenrod" Background="LightGoldenrodYellow" RenderTransformOrigin="-1.307,2.7" Click="Button_Click_Single"/>
         <Button Content="Multi Player" HorizontalAlignment="Left" Margin="517,450,0,0" VerticalAlignment="Top" Width="75" TextBlock.FontStyle="Italic" BorderBrush="Goldenrod" Background="LightGoldenrodYellow" RenderTransformOrigin="-1.307,2.7"/>
         <Button Content="Settings" HorizontalAlignment="Left" Margin="517,475,0,0" VerticalAlignment="Top" Width="75" TextBlock.FontStyle="Italic" BorderBrush="Goldenrod" Background="LightGoldenrodYellow" RenderTransformOrigin="-1.307,2.7" Click="Button_Click_Settings"/>

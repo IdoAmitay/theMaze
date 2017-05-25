@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Configuration;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace MazeGUI
@@ -113,6 +114,7 @@ namespace MazeGUI
         public void CrerateMaze (string name, int rows , int cols) 
         {
             this.model.TalkWithServer("generate " + name + " " + rows.ToString() + " " + cols.ToString());
+            
             this.name = name;
             this.rows = rows;
             this.cols = cols;
