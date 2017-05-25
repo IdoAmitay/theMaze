@@ -11,7 +11,7 @@ namespace MazeGUI
     {
         Dictionary<string, Action<string>> Commands { get; set; }
         MazeLib.Maze MyMaze { get; set; }
-        MazeLib.Position PlayerPosition { get; set; }
+        MazeLib.Position CurPos { get; set; }
         string Solution { get; set; }
         bool IsConnected();
         void CommunicateWithServer();

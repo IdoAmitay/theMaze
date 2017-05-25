@@ -99,7 +99,7 @@ namespace MazeGUI
 
         public MazeLib.Position VM_CurPos
         {
-            get { return this.model.PlayerPosition; }
+            get { return this.model.CurPos; }
             set { }
         }
         public string VM_MazeString

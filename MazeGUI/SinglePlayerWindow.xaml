@@ -12,7 +12,7 @@
         <Button Canvas.Left="265" Canvas.Top="20" Content="Solve maze"  TextBlock.FontStyle="Italic" BorderBrush="Goldenrod" Background="LightGoldenrodYellow" Click="btnSolveMaze_Click" />
         <Button Canvas.Left="340" Canvas.Top="20" Content="Main menu" TextBlock.FontStyle="Italic" BorderBrush="Goldenrod" Background="LightGoldenrodYellow" Click="btnMainMenu_Click" />
         <StackPanel Orientation="Horizontal">
-            <Controls:TheMazeBoard x:Name="myCanvasSingle"  Height="400" Width="400" Loaded="singleGame_Loaded"
+            <Controls:TheMazeBoard x:Name="mySingleGame"  Height="400" Width="400" Loaded="singleGame_Loaded"
                             HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="0,0,0,0" Margin="94,65,40,0" 
                             MazeName="{Binding VM_MazeName}" MazeRows="{Binding VM_MazeRows}" MazeCols="{Binding VM_MazeCols}" 
                             InitialPos="{Binding VM_InitialPos}" GoalPos="{Binding VM_GoalPos}"/>

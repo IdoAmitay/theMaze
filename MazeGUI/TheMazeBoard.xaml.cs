@@ -26,7 +26,7 @@ namespace MazeGUI
             InitializeComponent();
         }
 
-        public  TheMazeBoard(string name, int rows, int cols, Position curPos, Position goalPos)
+        /*public  TheMazeBoard(string name, int rows, int cols, Position curPos, Position goalPos)
         {
             InitializeComponent();
             MazeCols = cols;
@@ -34,9 +34,9 @@ namespace MazeGUI
             MazeName = name;
             CurPos = curPos;
             GoalPos = goalPos;
-        }
+        }*/
 
-        
+
 
         public string MazeName
         {
@@ -72,9 +72,9 @@ namespace MazeGUI
             DependencyProperty.Register("MazeCols", typeof(int), typeof(TheMazeBoard));
 
 
-        public Position InitialPos
+        public string InitialPos
         {
-            get { return (Position)GetValue(InitialPosProperty); }
+            get { return (string)GetValue(InitialPosProperty); }
             set { SetValue(InitialPosProperty, value); }
         }
 
@@ -82,20 +82,10 @@ namespace MazeGUI
         public static readonly DependencyProperty InitialPosProperty =
             DependencyProperty.Register("InitialPos", typeof(string), typeof(TheMazeBoard));
 
-        public Position CurPos
+
+        public string GoalPos
         {
-            get { return (Position)GetValue(CurPosProperty); }
-            set { SetValue(CurPosProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for GoalPos.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty CurPosProperty =
-            DependencyProperty.Register("CurPos", typeof(string), typeof(TheMazeBoard));
-
-
-        public Position GoalPos
-        {
-            get { return (Position)GetValue(GoalPosProperty); }
+            get { return (string)GetValue(GoalPosProperty); }
             set { SetValue(GoalPosProperty, value); }
         }
 
@@ -105,12 +95,24 @@ namespace MazeGUI
 
 
 
-        public void Draw(string recsStr)
+        public string CurPos
+        {
+            get { return (string)GetValue(CurPosProperty); }
+            set { SetValue(CurPosProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for CurPos.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty CurPosProperty =
+            DependencyProperty.Register("CurPos", typeof(string), typeof(TheMazeBoard));
+
+
+
+        public void Draw(string recsStr, int rows, int cols, Position curPos, Position goalPos)
         {
             int recindex = 0;
-            for (int i = 0; i < MazeRows; i++)
+            for (int i = 0; i < MazeRows - 1; i++)
             {
-                for (int j = 0; j < MazeCols; j++)
+                for (int j = 0; j < MazeCols - 1; j++)
                 {
                     Rectangle rec = new Rectangle()
                     {
@@ -148,8 +150,8 @@ namespace MazeGUI
                 StrokeThickness = 2
             };
 
-            Canvas.SetTop(recInit, CurPos.Row * recInit.Height);
-            Canvas.SetLeft(recInit, CurPos.Col * recInit.Width);
+            Canvas.SetTop(recInit, curPos.Row * recInit.Height);
+            Canvas.SetLeft(recInit, curPos.Col * recInit.Width);
             myCanvas.Children.Add(recInit);
 
             Rectangle recGoal = new Rectangle()
@@ -161,8 +163,8 @@ namespace MazeGUI
                 StrokeThickness = 2
             };
 
-            Canvas.SetTop(recGoal, GoalPos.Row * recGoal.Height);
-            Canvas.SetLeft(recGoal, GoalPos.Col * recGoal.Width);
+            Canvas.SetTop(recGoal, goalPos.Row * recGoal.Height);
+            Canvas.SetLeft(recGoal, goalPos.Col * recGoal.Width);
             myCanvas.Children.Add(recGoal);
 
         }

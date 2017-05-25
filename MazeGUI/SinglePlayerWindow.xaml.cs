@@ -23,7 +23,7 @@ namespace MazeGUI
     {
         
         private SinglePlayerVM vm;
-        private TheMazeBoard board;
+        //private TheMazeBoard board;
         int MazeRows
         {
             get
@@ -77,8 +77,8 @@ namespace MazeGUI
         {
 
             //Thread.Sleep(1);
-            this.board = new TheMazeBoard(this.vm.VM_MazeName, this.vm.VM_MazeRows, this.vm.VM_MazeCols, this.vm.VM_CurPos, this.vm.VM_GoalPos);
-            this.board.Draw(vm.VM_MazeString);
+            //this.board = new TheMazeBoard(this.vm.VM_MazeName, this.vm.VM_MazeRows, this.vm.VM_MazeCols, this.vm.VM_CurPos, this.vm.VM_GoalPos);
+            mySingleGame.Draw(vm.VM_MazeString, vm.VM_MazeRows, vm.VM_MazeCols, vm.VM_CurPos, vm.VM_GoalPos);
 
         }
 

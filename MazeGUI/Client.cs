@@ -26,9 +26,9 @@ namespace ClientProgram
         private string mazeName;
         private int mazeRows;
         private int mazeCols;
-        private Position playerPosition;
-        private Position goal;
-        private Position start;
+        private Position curPos;
+        private Position goalPos;
+        private Position initialPos;
         public int MazeCols
         {
             get
@@ -57,11 +57,11 @@ namespace ClientProgram
         {
             get
             {
-                return this.start;
+                return this.initialPos;
             }
             set
             {
-                this.start = value;
+                this.initialPos = value;
                 NotifyPropertyChanged("InitialPos");
             }
         }
@@ -69,11 +69,11 @@ namespace ClientProgram
         {
             get
             {
-                return this.goal;
+                return this.goalPos;
             }
             set
             {
-                this.goal = value;
+                this.goalPos = value;
                 NotifyPropertyChanged("GoalPos");
             }
         }
@@ -101,16 +101,16 @@ namespace ClientProgram
                 NotifyPropertyChanged("MazeName");
             }
         }
-        public Position PlayerPosition
+        public Position CurPos
         {
             get
             {
-                return this.playerPosition;
+                return this.curPos;
             }
             set
             {
-                this.playerPosition = value;
-                NotifyPropertyChanged("PlayerPosition");
+                this.curPos = value;
+                NotifyPropertyChanged("CurPos");
             }
         }
     
@@ -157,18 +157,18 @@ namespace ClientProgram
         {
             while (IsConnected())
             {
-                StringBuilder result = new StringBuilder();
+                String result = "";
 
                 do
                 {
                     //appending the server's answer to the last command sent
-                    result.Append(this.breader.ReadString());
+                    result += this.breader.ReadString();
                 } while (this.stream.DataAvailable);
                 //printing the message to the client
                 //MessageReceived(result.ToString());
                 if (Commands.ContainsKey(this.command))
                 {
-                    Commands[this.command](result.ToString());
+                    Commands[this.command](result);
                 }
                
                 
@@ -231,44 +231,53 @@ namespace ClientProgram
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
         }
 
-        public void UpdateMaze (string maze)
+        public void UpdateMaze(string maze)
         {
             // MazeLib.Maze mazeTemp = new MazeLib.Maze();
             // MazeLib.Maze m = MazeLib.Maze.FromJSON(maze);
             // MyMaze = m;
-            //MyMaze = new Maze(4,4);
-            Console.WriteLine(maze);
-            this.maze = Maze.FromJSON(maze);
+            MyMaze = new Maze(4,4);
+            // Console.WriteLine(maze);
+           // Maze check = new Maze(4, 4);
+            //string str = check.ToJSON();
+           // this.maze = Maze.FromJSON(check.ToJSON());
             this.MyMaze = Maze.FromJSON(maze);
+            mazeName = this.MyMaze.Name;
+            MazeRows = this.MyMaze.Rows;
+            mazeCols = this.MyMaze.Cols;
+            InitialPos = this.MyMaze.InitialPos;
+            CurPos = this.initialPos;
+            GoalPos = this.MyMaze.GoalPos;
+
             this.NotifyPropertyChanged("MyMaze");
         }
         public void UpdatePosition (string direction)
         {
             if (direction.Equals("up") 
-                && this.MyMaze[this.PlayerPosition.Row + 1, this.PlayerPosition.Col] == MazeLib.CellType.Free)
+                && this.MyMaze[this.CurPos.Row + 1, this.CurPos.Col] == MazeLib.CellType.Free)
             {
-                this.PlayerPosition = new MazeLib.Position(this.PlayerPosition.Row + 1, this.PlayerPosition.Col);
+                this.CurPos = new MazeLib.Position(this.CurPos.Row + 1, this.CurPos.Col);
                 
             }
             if(direction.Equals("down")
-                && this.MyMaze[this.PlayerPosition.Row - 1, this.PlayerPosition.Col] == MazeLib.CellType.Free)
+                && this.MyMaze[this.CurPos.Row - 1, this.CurPos.Col] == MazeLib.CellType.Free)
             {
-                this.PlayerPosition = new MazeLib.Position(this.PlayerPosition.Row - 1, this.PlayerPosition.Col);
+                this.CurPos = new MazeLib.Position(this.CurPos.Row - 1, this.CurPos.Col);
                 
             }
             if (direction.Equals("left")
-                && this.MyMaze[this.PlayerPosition.Row, this.PlayerPosition.Col - 1] == MazeLib.CellType.Free)
+                && this.MyMaze[this.CurPos.Row, this.CurPos.Col - 1] == MazeLib.CellType.Free)
             {
-                this.PlayerPosition = new MazeLib.Position(this.PlayerPosition.Row , this.PlayerPosition.Col - 1);
+                this.CurPos = new MazeLib.Position(this.CurPos.Row , this.CurPos.Col - 1);
                 
             }
             if (direction.Equals("right")
-                && this.MyMaze[this.PlayerPosition.Row, this.PlayerPosition.Col + 1] == MazeLib.CellType.Free)
+                && this.MyMaze[this.CurPos.Row, this.CurPos.Col + 1] == MazeLib.CellType.Free)
             {
-                this.PlayerPosition = new MazeLib.Position(this.PlayerPosition.Row, this.PlayerPosition.Col + 1);
+                this.CurPos = new MazeLib.Position(this.CurPos.Row, this.CurPos.Col + 1);
                 
             }
-            this.NotifyPropertyChanged("PlayerPosition");
+            this.NotifyPropertyChanged("CurPos");
 
         }
         public void UpdatePositionFromJson(string json)
