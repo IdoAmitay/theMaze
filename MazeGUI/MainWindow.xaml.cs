@@ -29,8 +29,9 @@ namespace MazeGUI
         private void Button_Click_Single(object sender, RoutedEventArgs e)
         {
             SinglePlayerMenu sp = new SinglePlayerMenu();
+            this.Close();
+
             sp.Show();
-            this.Hide();
         }
 
         private void Button_Click_Settings(object sender, RoutedEventArgs e)
@@ -39,7 +40,9 @@ namespace MazeGUI
             // vm.SaveSettings();
             Window win = new GameSettingswindow();
             win.Show();
-            this.Close();
+            this.Hide();
+
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -48,5 +51,7 @@ namespace MazeGUI
             mp.Show();
             this.Hide();
         }
+
+        
     }
 }

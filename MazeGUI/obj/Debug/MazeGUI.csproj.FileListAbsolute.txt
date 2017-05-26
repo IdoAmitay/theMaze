@@ -53,4 +53,6 @@ C:\Users\User\Documents\Visual Studio 2017\Projects\MazeGUI\theMaze\MazeGUI\obj\
 C:\Users\User\Documents\Visual Studio 2017\Projects\MazeGUI\theMaze\MazeGUI\bin\Debug\MazeLib.dll
 C:\Users\User\Documents\Visual Studio 2017\Projects\MazeGUI\theMaze\MazeGUI\obj\Debug\MultiPlayerMenu.g.cs
 C:\Users\User\Documents\Visual Studio 2017\Projects\MazeGUI\theMaze\MazeGUI\obj\Debug\MultiPlayerMenu.baml
+C:\Users\User\Documents\Visual Studio 2017\Projects\MazeGUI\theMaze\MazeGUI\obj\Debug\MultiPlayerWindow.g.cs
+C:\Users\User\Documents\Visual Studio 2017\Projects\MazeGUI\theMaze\MazeGUI\obj\Debug\MultiPlayerWindow.baml
 C:\Users\User\Documents\Visual Studio 2017\Projects\MazeGUI\theMaze\MazeGUI\obj\Debug\MazeGUI.csprojResolveAssemblyReference.cache

@@ -81,6 +81,9 @@
       <DependentUpon>MultiPlayerMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="MultiPlayerVM.cs" />
+    <Compile Include="MultiPlayerWindow.xaml.cs">
+      <DependentUpon>MultiPlayerWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Server.cs" />
     <Compile Include="SettingsViewModel.cs" />
     <Compile Include="SinglePlayerMenu.xaml.cs">
@@ -132,6 +135,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="MultiPlayerMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MultiPlayerWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

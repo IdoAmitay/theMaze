@@ -22,9 +22,9 @@ WindowStartupLocation="CenterScreen">
         <TextBlock Foreground="Goldenrod">Maze name:</TextBlock>
         <TextBox x:Name="txtName" Grid.Column="1" Foreground="LightYellow" Background="#0f1a1e" Text="{Binding Path = Name, Mode=TwoWay}"></TextBox>
         <TextBlock Grid.Row="2" Foreground="Goldenrod">Maze rows:</TextBlock>
-        <TextBox x:Name="txtRows" Foreground="LightYellow" Grid.Row="2" Background="#0f1a1e" Grid.Column="2" Text="{Binding Path = Rows, Mode=TwoWay}"></TextBox>
+        <TextBox x:Name="txtRows" Foreground="LightYellow" Grid.Row="2" Background="#0f1a1e" Grid.Column="2" Text="{Binding DefaultRows, Mode= TwoWay}"></TextBox>
         <TextBlock Grid.Row="3" Foreground="Goldenrod">Maze columns:</TextBlock>
-        <TextBox x:Name="txtCols" Foreground="LightYellow" Background="#0f1a1e" Grid.Row="3" Grid.Column="2" Text="{Binding Path= Cols, Mode=TwoWay}" TextChanged="txtCols_TextChanged"></TextBox>
+        <TextBox x:Name="txtCols" Foreground="LightYellow" Background="#0f1a1e" Grid.Row="3" Grid.Column="2" Text="{Binding DefaultCols, Mode= TwoWay}" TextChanged="txtCols_TextChanged"></TextBox>
         <Button x:Name="btnOk" Foreground="Goldenrod" Background ="LightYellow" BorderBrush="Goldenrod"  Grid.Row="4" HorizontalAlignment="Center"
 Grid.ColumnSpan="2" Click="btnOK_Click"  Margin="5" Padding="5">OK</Button>
     </Grid>

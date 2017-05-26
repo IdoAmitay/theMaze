@@ -19,10 +19,29 @@ namespace MazeGUI
     /// </summary>
     public partial class MultiPlayerMenu : Window
     {
+        private MultiPlayerVM vm = new MultiPlayerVM();
         public MultiPlayerMenu()
         {
             InitializeComponent();
+            this.DataContext = this;
+            this.vm.List();
+            this. Rows = Properties.Settings.Default.MazeRows;
+            this.Cols = Properties.Settings.Default.MazeCols;
+
         }
+
+        public int Rows { get; set; }
+        public int Cols { get; set; }
+        public List<string> Games
+        {
+            get { return (List<string>)GetValue(GamesProperty); }
+            set { SetValue(GamesProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Games.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty GamesProperty =
+            DependencyProperty.Register("Games", typeof(List<string>), typeof(MultiPlayerMenu), new PropertyMetadata(default(List<string>)));
+
 
         private void btnJoin_Click(object sender, RoutedEventArgs e)
         {

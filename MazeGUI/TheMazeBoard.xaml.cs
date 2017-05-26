@@ -107,7 +107,7 @@ namespace MazeGUI
 
 
 
-        public void Draw(string recsStr, int rows, int cols, Position curPos, Position goalPos)
+        public void Draw(string recsStr, int rows, int cols, Position curPos, Position goalPos, string player)
         {
             string s = MazeName;
             int recindex = 0;
@@ -146,7 +146,7 @@ namespace MazeGUI
             {
                 Height = (this.ActualHeight / MazeRows),
                 Width = (this.ActualWidth / MazeCols),
-                Fill = new ImageBrush(new BitmapImage(new Uri(@"resources/harry potter.jpg", UriKind.Relative))),
+                Fill = new ImageBrush(new BitmapImage(new Uri(@player, UriKind.Relative))),
                 Stroke = Brushes.Black,
                 StrokeThickness = 0.5
             };

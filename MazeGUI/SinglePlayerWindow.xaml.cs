@@ -60,7 +60,7 @@ namespace MazeGUI
             {
                 case MessageBoxResult.Yes:
                     vm.Restart();
-                    mySingleGame.Draw(vm.VM_MazeString, vm.VM_MazeRows, vm.VM_MazeCols, vm.VM_CurPos, vm.VM_GoalPos);
+                    mySingleGame.Draw(vm.VM_MazeString, vm.VM_MazeRows, vm.VM_MazeCols, vm.VM_CurPos, vm.VM_GoalPos, "resources/harry potter.jpg" );
                     break;
 
                 case MessageBoxResult.No:
@@ -79,7 +79,7 @@ namespace MazeGUI
                 {
                     this.vm.Move(this.vm.ConvertStep(int.Parse(vm.Solution[i].ToString())));
                     Thread.Sleep(500);
-                    mySingleGame.Draw(vm.VM_MazeString, vm.VM_MazeRows, vm.VM_MazeCols, vm.VM_CurPos, vm.VM_GoalPos);
+                    mySingleGame.Draw(vm.VM_MazeString, vm.VM_MazeRows, vm.VM_MazeCols, vm.VM_CurPos, vm.VM_GoalPos, "resources/harry potter.jpg");
                 }
                 ));
                 if (vm.VM_CurPos.Equals(vm.VM_GoalPos))
@@ -118,7 +118,7 @@ namespace MazeGUI
 
            // Thread.Sleep(1);
             //this.board = new TheMazeBoard(this.vm.VM_MazeName, this.vm.VM_MazeRows, this.vm.VM_MazeCols, this.vm.VM_CurPos, this.vm.VM_GoalPos);
-            mySingleGame.Draw(vm.VM_MazeString, vm.VM_MazeRows, vm.VM_MazeCols, vm.VM_CurPos, vm.VM_GoalPos);
+            mySingleGame.Draw(vm.VM_MazeString, vm.VM_MazeRows, vm.VM_MazeCols, vm.VM_CurPos, vm.VM_GoalPos, "resources/harry potter.jpg");
 
         }
 
@@ -140,7 +140,7 @@ namespace MazeGUI
             {
                 vm.Move("right");
             }
-            mySingleGame.Draw(vm.VM_MazeString, vm.VM_MazeRows, vm.VM_MazeCols, vm.VM_CurPos, vm.VM_GoalPos);
+            mySingleGame.Draw(vm.VM_MazeString, vm.VM_MazeRows, vm.VM_MazeCols, vm.VM_CurPos, vm.VM_GoalPos, "resources/harry potter.jpg");
             if (vm.VM_CurPos.Equals(vm.VM_GoalPos))
             {
                 MessageBoxResult result = MessageBox.Show("You Win!", "Game Over", MessageBoxButton.OK, MessageBoxImage.Information);

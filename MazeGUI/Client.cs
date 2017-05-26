@@ -30,6 +30,32 @@ namespace ClientProgram
         private Position curPos;
         private Position goalPos;
         private Position initialPos;
+        private List<string> games;
+        private Position oppPos;
+        public Position OppPos
+        {
+            get
+            {
+                return this.oppPos;
+            }
+            set
+            {
+                this.oppPos = value;
+                NotifyPropertyChanged("OppPos");
+            }
+        }
+        public List<string> Games
+        {
+            get
+            {
+                return this.games;
+            }
+            set
+            {
+                this.games = value;
+                NotifyPropertyChanged("Games");
+            }
+        }
         public int MazeCols
         {
             get
@@ -118,7 +144,7 @@ namespace ClientProgram
         public Dictionary<string, Action<string>> Commands { get ; set ; }
         public string Solution { get ; set ; }
 
-        public event Action<String> MessageReceived;
+       // public event Action<String> MessageReceived;
        // public event Action<string> MazeUpdate;
         //public event Action<string> PositionUpdate;
        // private Dictionary<string, Action<string>> commands;
@@ -250,38 +276,38 @@ namespace ClientProgram
             GoalPos = MyMaze.GoalPos;
 
         }
-        public void UpdatePosition (string direction)
+        public void UpdatePosition ( ref Position pos,string direction)
         {
-            if (direction.Equals("up") && this.CurPos.Row - 1 >= 0)
+            if (direction.Equals("up") && pos.Row - 1 >= 0)
             {
 
-                if (this.MyMaze[this.CurPos.Row - 1, this.CurPos.Col] == MazeLib.CellType.Free)
+                if (this.MyMaze[pos.Row - 1, pos.Col] == MazeLib.CellType.Free)
                 {
-                    this.CurPos = new MazeLib.Position(this.CurPos.Row - 1, this.CurPos.Col);
-
-                }
-            }
-            if (direction.Equals("down") && this.CurPos.Row + 1 < this.MyMaze.Rows)
-            {
-                if (this.MyMaze[this.CurPos.Row + 1, this.CurPos.Col] == MazeLib.CellType.Free)
-                {
-                    this.CurPos = new MazeLib.Position(this.CurPos.Row + 1, this.CurPos.Col);
+                    pos = new MazeLib.Position(pos.Row - 1, pos.Col);
 
                 }
             }
-            if (direction.Equals("left") && this.CurPos.Col - 1 >= 0)
+            if (direction.Equals("down") && pos.Row + 1 < this.MyMaze.Rows)
             {
-                if (this.MyMaze[this.CurPos.Row, this.CurPos.Col - 1] == MazeLib.CellType.Free)
+                if (this.MyMaze[pos.Row + 1, pos.Col] == MazeLib.CellType.Free)
                 {
-                    this.CurPos = new MazeLib.Position(this.CurPos.Row, this.CurPos.Col - 1);
+                    pos = new MazeLib.Position(pos.Row + 1, pos.Col);
 
                 }
             }
-            if (direction.Equals("right") && this.CurPos.Col + 1 < this.MyMaze.Cols)
+            if (direction.Equals("left") && pos.Col - 1 >= 0)
             {
-                if (this.MyMaze[this.CurPos.Row, this.CurPos.Col + 1] == MazeLib.CellType.Free)
+                if (this.MyMaze[pos.Row, pos.Col - 1] == MazeLib.CellType.Free)
                 {
-                    this.CurPos = new MazeLib.Position(this.CurPos.Row, this.CurPos.Col + 1);
+                    pos = new MazeLib.Position(pos.Row, pos.Col - 1);
+
+                }
+            }
+            if (direction.Equals("right") && pos.Col + 1 < this.MyMaze.Cols)
+            {
+                if (this.MyMaze[pos.Row, pos.Col + 1] == MazeLib.CellType.Free)
+                {
+                    pos = new MazeLib.Position(pos.Row, pos.Col + 1);
 
                 }
             }
@@ -290,7 +316,7 @@ namespace ClientProgram
         public void UpdatePositionFromJson(string json)
         {
             string[] arr = json.Split('\"');
-            this.UpdatePosition(arr[7]);
+            this.UpdatePosition(ref this.curPos,arr[7]);
         }
         public void UpdateSolution (string json)
         {
@@ -315,7 +341,7 @@ namespace ClientProgram
             this.command = arr[0];
             if (command.Equals("smove"))
             {
-                this.UpdatePosition(arr[1]);
+                this.UpdatePosition(ref this.curPos,arr[1]);
                 return;
             }
             Task task = new Task(this.CommunicateWithServer);
@@ -331,6 +357,18 @@ namespace ClientProgram
             task.Wait();
 
         }
+        public void  GetGamesList(string json)
+        {
+            string[] arr = json.Split('\"');
+            List<string> temp = new List<string>();
+            for (int i = 1; i < arr.Length; i += 2)
+            {
+                temp.Add(arr[i]);
+            }
+            Games = temp;
+        }
+
+        
     }
 }
 

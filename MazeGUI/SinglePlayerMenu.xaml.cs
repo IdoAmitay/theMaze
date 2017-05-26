@@ -21,7 +21,8 @@ namespace MazeGUI
     {
 
         // string Name { get; set; }
-
+        public int DefaultRows { get; set; }
+        public int DefaultCols { get; set; }
 
         public string Name
         {
@@ -35,7 +36,7 @@ namespace MazeGUI
 
 
         // int Rows { get; set; }
-
+/*
 
         public int Rows
         {
@@ -61,10 +62,12 @@ namespace MazeGUI
         public static readonly DependencyProperty ColsProperty =
             DependencyProperty.Register("Cols", typeof(int), typeof(SinglePlayerMenu), new PropertyMetadata(0));
 
-
+        */
         SinglePlayerVM vm;
         public SinglePlayerMenu()
         {
+            this.DefaultRows = Properties.Settings.Default.MazeRows;
+            this.DefaultCols = Properties.Settings.Default.MazeCols;
             InitializeComponent();
             vm = new SinglePlayerVM(/*new SinglePlayerModel(vm.VM_MazeName, vm.VM_MazeRows, vm.VM_MazeCols)*/);
             this.DataContext = this;
@@ -72,7 +75,9 @@ namespace MazeGUI
 
         private void btnOK_Click(object sender, RoutedEventArgs e)
         {
-            Window singlePlayerGame = new SinglePlayerWindow(Name, Rows,Cols);
+            // Window singlePlayerGame = new SinglePlayerWindow(Name, Rows,Cols);
+             Window singlePlayerGame = new SinglePlayerWindow(Name, DefaultRows,DefaultCols);
+
             this.Close();
             singlePlayerGame.Show();
 

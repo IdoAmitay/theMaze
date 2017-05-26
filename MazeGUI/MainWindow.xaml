@@ -5,11 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MazeGUI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="600" FontSize="14"  WindowStartupLocation="CenterScreen" Background="#0f1a1e" >
+        Title="MainWindow" Height="600" Width="600" FontSize="14"  WindowStartupLocation="CenterScreen" Background="#0f1a1e">
     
     <Grid Margin="-265,-160,-297,-201" Height="930" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="1154" RenderTransformOrigin="0.51,0.509">
-       
-        <Image Grid.RowSpan="2" Source="bin\Debug\resources\HarryPotter.png" Margin="256,-425,282,-110"/>
+
         <Button Content="Single Player" HorizontalAlignment="Left" Margin="517,451,0,0" VerticalAlignment="Top" Width="86" Foreground="Goldenrod" TextBlock.FontStyle="Italic" BorderBrush="Goldenrod" Background="LightGoldenrodYellow" RenderTransformOrigin="-1.307,2.7" Click="Button_Click_Single"/>
         <Button Content="Multi Player" HorizontalAlignment="Left" Margin="517,486,0,0" VerticalAlignment="Top" Width="86" Foreground="Goldenrod" TextBlock.FontStyle="Italic" BorderBrush="Goldenrod" Background="LightGoldenrodYellow" RenderTransformOrigin="-1.307,2.7" Click="Button_Click"/>
         <Button Content="Settings" HorizontalAlignment="Left" Margin="517,522,0,0" VerticalAlignment="Top" Width="86" Foreground="Goldenrod" TextBlock.FontStyle="Italic" BorderBrush="Goldenrod" Background="LightGoldenrodYellow" RenderTransformOrigin="-1.307,2.7" Click="Button_Click_Settings"/>
