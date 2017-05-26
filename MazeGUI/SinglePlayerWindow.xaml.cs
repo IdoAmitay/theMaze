@@ -25,7 +25,7 @@ namespace MazeGUI
         
         private SinglePlayerVM vm;
         //private TheMazeBoard board;
-        int MazeRows
+       /* int MazeRows
         {
             get
             {
@@ -41,7 +41,7 @@ namespace MazeGUI
             {
                 this.vm.VM_MazeName = value;
             }
-        }
+        }*/
         public SinglePlayerWindow(string name, int rows, int cols)
         {
             InitializeComponent();
@@ -82,7 +82,14 @@ namespace MazeGUI
                     mySingleGame.Draw(vm.VM_MazeString, vm.VM_MazeRows, vm.VM_MazeCols, vm.VM_CurPos, vm.VM_GoalPos);
                 }
                 ));
-
+                if (vm.VM_CurPos.Equals(vm.VM_GoalPos))
+                {
+                    MessageBoxResult result = MessageBox.Show("You Win!", "Game Over", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MainWindow mw = new MainWindow();
+                    mw.Show();
+                    //this.Hide();
+                    this.Close();
+                }
             }
           
         }
@@ -95,7 +102,8 @@ namespace MazeGUI
                 case MessageBoxResult.Yes:
                     MainWindow mw = new MainWindow();
                     mw.Show();
-                    this.Hide();
+                    // this.Hide();
+                    this.Close();
                     break;
 
                 case MessageBoxResult.No:
@@ -133,6 +141,16 @@ namespace MazeGUI
                 vm.Move("right");
             }
             mySingleGame.Draw(vm.VM_MazeString, vm.VM_MazeRows, vm.VM_MazeCols, vm.VM_CurPos, vm.VM_GoalPos);
+            if (vm.VM_CurPos.Equals(vm.VM_GoalPos))
+            {
+                MessageBoxResult result = MessageBox.Show("You Win!", "Game Over", MessageBoxButton.OK, MessageBoxImage.Information);
+                MainWindow mw = new MainWindow();
+                mw.Show();
+                //this.Hide();
+                this.Close();
+            }
         }
+
+
     }
 }

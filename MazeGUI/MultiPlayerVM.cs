@@ -20,13 +20,13 @@ namespace MazeGUI
                     NotifyPropertyChanged("VM_" + e.PropertyName);
                 };
             Dictionary<string, Action<string>> c = new Dictionary<string, Action<string>>();
-            c.Add("generate", this.model.UpdateMaze);
+           // c.Add("generate", this.model.UpdateMaze);
             c.Add("start", this.model.UpdateMaze);
             c.Add("join", this.model.UpdateMaze);
-            c.Add("start", this.model.UpdateMaze);
+            //c.Add("start", this.model.UpdateMaze);
             c.Add("play", this.model.UpdatePositionFromJson);
             c.Add("close", this.model.UpdateMaze);
-            c.Add("solve", this.model.UpdateSolution);
+           // c.Add("solve", this.model.UpdateSolution);
             this.model.Commands = c;
             
         }
