@@ -51,4 +51,6 @@ C:\Users\User\Documents\Visual Studio 2017\Projects\MazeGUI\theMaze\MazeGUI\obj\
 C:\Users\User\Documents\Visual Studio 2017\Projects\MazeGUI\theMaze\MazeGUI\obj\Debug\MazeGUI.csproj.GenerateResource.Cache
 C:\Users\User\Documents\Visual Studio 2017\Projects\MazeGUI\theMaze\MazeGUI\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\User\Documents\Visual Studio 2017\Projects\MazeGUI\theMaze\MazeGUI\bin\Debug\MazeLib.dll
+C:\Users\User\Documents\Visual Studio 2017\Projects\MazeGUI\theMaze\MazeGUI\obj\Debug\MultiPlayerMenu.g.cs
+C:\Users\User\Documents\Visual Studio 2017\Projects\MazeGUI\theMaze\MazeGUI\obj\Debug\MultiPlayerMenu.baml
 C:\Users\User\Documents\Visual Studio 2017\Projects\MazeGUI\theMaze\MazeGUI\obj\Debug\MazeGUI.csprojResolveAssemblyReference.cache

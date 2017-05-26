@@ -46,7 +46,7 @@ namespace MazeGUI
 
         // Using a DependencyProperty as the backing store for MazeName.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty MazeNameProperty =
-            DependencyProperty.Register("MazeName", typeof(string), typeof(TheMazeBoard));
+            DependencyProperty.Register("MazeName", typeof(string), typeof(TheMazeBoard) ,new PropertyMetadata(default(string)));
 
 
         public int MazeRows
@@ -57,7 +57,7 @@ namespace MazeGUI
 
         // Using a DependencyProperty as the backing store for MazeRows.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty MazeRowsProperty =
-            DependencyProperty.Register("MazeRows", typeof(int), typeof(TheMazeBoard));
+            DependencyProperty.Register("MazeRows", typeof(int), typeof(TheMazeBoard),  new PropertyMetadata(0));
 
 
 
@@ -69,7 +69,7 @@ namespace MazeGUI
 
         // Using a DependencyProperty as the backing store for MazeCols.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty MazeColsProperty =
-            DependencyProperty.Register("MazeCols", typeof(int), typeof(TheMazeBoard));
+            DependencyProperty.Register("MazeCols", typeof(int), typeof(TheMazeBoard), new PropertyMetadata(0));
 
 
         public string InitialPos
@@ -80,7 +80,7 @@ namespace MazeGUI
 
         // Using a DependencyProperty as the backing store for InitialPos.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty InitialPosProperty =
-            DependencyProperty.Register("InitialPos", typeof(string), typeof(TheMazeBoard));
+            DependencyProperty.Register("InitialPos", typeof(string), typeof(TheMazeBoard), new PropertyMetadata(default(string)));
 
 
         public string GoalPos
@@ -91,7 +91,7 @@ namespace MazeGUI
 
         // Using a DependencyProperty as the backing store for GoalPos.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty GoalPosProperty =
-            DependencyProperty.Register("GoalPos", typeof(string), typeof(TheMazeBoard));
+            DependencyProperty.Register("GoalPos", typeof(string), typeof(TheMazeBoard), new PropertyMetadata(default(string)));
 
 
 
@@ -103,7 +103,7 @@ namespace MazeGUI
 
         // Using a DependencyProperty as the backing store for CurPos.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty CurPosProperty =
-            DependencyProperty.Register("CurPos", typeof(string), typeof(TheMazeBoard));
+            DependencyProperty.Register("CurPos", typeof(string), typeof(TheMazeBoard), new PropertyMetadata(default(string)));
 
 
 
@@ -120,8 +120,8 @@ namespace MazeGUI
                         Height = (this.ActualHeight / MazeRows),
                         Width = (this.ActualWidth / MazeCols),
                         Fill = Brushes.White,
-                        Stroke = Brushes.Black,
-                        StrokeThickness = 2
+                        Stroke = Brushes.White,
+                        StrokeThickness = 0.5
                     };
 
                     while (recsStr[recindex] != '1' && recsStr[recindex] != '0'
@@ -131,9 +131,9 @@ namespace MazeGUI
                     }
 
                     if (recsStr[recindex] == '1')
-                        rec.Fill = Brushes.DarkSeaGreen;
+                        rec.Fill = Brushes.Black;
                     else if (recsStr[recindex] == '0')
-                        rec.Fill = Brushes.LightSkyBlue;
+                        rec.Fill = Brushes.White;
 
                     Canvas.SetTop(rec, i * rec.Height);
                     Canvas.SetLeft(rec, j * rec.Width);
@@ -148,7 +148,7 @@ namespace MazeGUI
                 Width = (this.ActualWidth / MazeCols),
                 Fill = new ImageBrush(new BitmapImage(new Uri(@"resources/harry potter.jpg", UriKind.Relative))),
                 Stroke = Brushes.Black,
-                StrokeThickness = 2
+                StrokeThickness = 0.5
             };
 
             Canvas.SetTop(recInit, curPos.Row * recInit.Height);
@@ -161,7 +161,7 @@ namespace MazeGUI
                 Width = (this.ActualWidth / MazeCols),
                 Fill = new ImageBrush(new BitmapImage(new Uri(@"resources/snitch 2.jpg", UriKind.Relative))),
                 Stroke = Brushes.Black,
-                StrokeThickness = 2
+                StrokeThickness = 0.5
             };
 
             Canvas.SetTop(recGoal, goalPos.Row * recGoal.Height);

@@ -21,6 +21,7 @@ namespace ClientProgram
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private Maze maze;
+       // private Maze originalMaze;
         private static Client instance;
         private string command;
         private string mazeName;
@@ -192,17 +193,16 @@ namespace ClientProgram
         /// <param name="s"> the command string</param>
         public void sendCommand(string s)
         {
-            string[] arr = s.Split(' ');
+           /* string[] arr = s.Split(' ');
             this.command = arr[0];
             if (command.Equals("smove"))
             {
                 this.UpdatePosition(arr[1]);
-            }
-            else
-            {
+            }*/
+           
                // this.command = s;
                 this.swriter.WriteLine(s);
-            }
+            
 
            
         }
@@ -253,15 +253,15 @@ namespace ClientProgram
         public void UpdatePosition (string direction)
         {
             if (direction.Equals("up") 
-                && this.MyMaze[this.CurPos.Row + 1, this.CurPos.Col] == MazeLib.CellType.Free)
-            {
-                this.CurPos = new MazeLib.Position(this.CurPos.Row + 1, this.CurPos.Col);
-                
-            }
-            if(direction.Equals("down")
                 && this.MyMaze[this.CurPos.Row - 1, this.CurPos.Col] == MazeLib.CellType.Free)
             {
                 this.CurPos = new MazeLib.Position(this.CurPos.Row - 1, this.CurPos.Col);
+                
+            }
+            if(direction.Equals("down")
+                && this.MyMaze[this.CurPos.Row + 1, this.CurPos.Col] == MazeLib.CellType.Free)
+            {
+                this.CurPos = new MazeLib.Position(this.CurPos.Row + 1, this.CurPos.Col);
                 
             }
             if (direction.Equals("left")
@@ -276,7 +276,6 @@ namespace ClientProgram
                 this.CurPos = new MazeLib.Position(this.CurPos.Row, this.CurPos.Col + 1);
                 
             }
-            this.NotifyPropertyChanged("CurPos");
 
         }
         public void UpdatePositionFromJson(string json)
@@ -303,6 +302,13 @@ namespace ClientProgram
         }
         public void TalkWithServer (string myCommand)
         {
+            string[] arr = myCommand.Split(' ');
+            this.command = arr[0];
+            if (command.Equals("smove"))
+            {
+                this.UpdatePosition(arr[1]);
+                return;
+            }
             Task task = new Task(this.CommunicateWithServer);
             //checking if the client is connected
             if (!this.IsConnected())

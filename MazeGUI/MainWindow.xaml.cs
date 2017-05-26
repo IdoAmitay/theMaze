@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,7 +28,7 @@ namespace MazeGUI
 
         private void Button_Click_Single(object sender, RoutedEventArgs e)
         {
-            SinglePlayerMenu sp = new SinglePlayerMenu();////////////////////
+            SinglePlayerMenu sp = new SinglePlayerMenu();
             sp.Show();
             this.Hide();
         }
@@ -38,9 +39,14 @@ namespace MazeGUI
             // vm.SaveSettings();
             Window win = new GameSettingswindow();
             win.Show();
-            //win.ShowDialog();
             this.Close();
-            //jkwrhtkjhtrkwh
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MultiPlayerMenu mp = new MultiPlayerMenu();
+            mp.Show();
+            this.Hide();
         }
     }
 }

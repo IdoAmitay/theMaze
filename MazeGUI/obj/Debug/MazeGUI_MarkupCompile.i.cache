@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\User\Documents\Visual Studio 2017\Projects\MazeGUI\theMaze\MazeGUI\App.xaml
-5421528773
+6-1227095459
 
-49-1862502485
+501653053031
 192142307472
-GameSettingswindow.xaml;MainWindow.xaml;SinglePlayerMenu.xaml;SinglePlayerWindow.xaml;TheMazeBoard.xaml;
+GameSettingswindow.xaml;MainWindow.xaml;MultiPlayerMenu.xaml;SinglePlayerMenu.xaml;SinglePlayerWindow.xaml;TheMazeBoard.xaml;
 
-True
+False
 

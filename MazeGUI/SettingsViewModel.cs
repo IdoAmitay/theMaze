@@ -7,7 +7,7 @@ using System.Windows;
 
 namespace MazeGUI
 {
-    class SettingsViewModel : ViewModel
+    class SettingsViewModel : ViewModel 
     {
         private ISettingsModel model;
         public SettingsViewModel(ISettingsModel model)

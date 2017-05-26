@@ -77,6 +77,9 @@
     </Compile>
     <Compile Include="IMvvmModel.cs" />
     <Compile Include="ISettingsModel.cs" />
+    <Compile Include="MultiPlayerMenu.xaml.cs">
+      <DependentUpon>MultiPlayerMenu.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MultiPlayerVM.cs" />
     <Compile Include="Server.cs" />
     <Compile Include="SettingsViewModel.cs" />
@@ -128,6 +131,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MultiPlayerMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="SinglePlayerMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

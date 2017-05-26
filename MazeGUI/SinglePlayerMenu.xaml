@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MazeGUI"
         mc:Ignorable="d"
-        Title="SinglePlayerMenu" Height="600" Width="600"
+        Title="SinglePlayerMenu" Height="210" Width="600" Background="#0f1a1e"
 WindowStartupLocation="CenterScreen">
     <Grid Margin="30,20,40,40" TextBlock.FontSize="14">
         <Grid.RowDefinitions>
@@ -19,13 +19,13 @@ WindowStartupLocation="CenterScreen">
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock>Maze name:</TextBlock>
-        <TextBox x:Name="txtName" Grid.Column="1" Text="{Binding Path = Name, Mode=TwoWay}"></TextBox>
-        <TextBlock Grid.Row="2">Maze rows:</TextBlock>
-        <TextBox x:Name="txtRows" Grid.Row="2" Grid.Column="2" Text="{Binding Path = Rows, Mode=TwoWay}"></TextBox>
-        <TextBlock Grid.Row="3">Maze columns:</TextBlock>
-        <TextBox x:Name="txtCols" Grid.Row="3" Grid.Column="2" Text="{Binding Path= Cols, Mode=TwoWay}"></TextBox>
-        <Button x:Name="btnOk" Grid.Row="4" HorizontalAlignment="Center"
+        <TextBlock Foreground="Goldenrod">Maze name:</TextBlock>
+        <TextBox x:Name="txtName" Grid.Column="1" Foreground="LightYellow" Background="#0f1a1e" Text="{Binding Path = Name, Mode=TwoWay}"></TextBox>
+        <TextBlock Grid.Row="2" Foreground="Goldenrod">Maze rows:</TextBlock>
+        <TextBox x:Name="txtRows" Foreground="LightYellow" Grid.Row="2" Background="#0f1a1e" Grid.Column="2" Text="{Binding Path = Rows, Mode=TwoWay}"></TextBox>
+        <TextBlock Grid.Row="3" Foreground="Goldenrod">Maze columns:</TextBlock>
+        <TextBox x:Name="txtCols" Foreground="LightYellow" Background="#0f1a1e" Grid.Row="3" Grid.Column="2" Text="{Binding Path= Cols, Mode=TwoWay}" TextChanged="txtCols_TextChanged"></TextBox>
+        <Button x:Name="btnOk" Foreground="Goldenrod" Background ="LightYellow" BorderBrush="Goldenrod"  Grid.Row="4" HorizontalAlignment="Center"
 Grid.ColumnSpan="2" Click="btnOK_Click"  Margin="5" Padding="5">OK</Button>
     </Grid>
 </Window>

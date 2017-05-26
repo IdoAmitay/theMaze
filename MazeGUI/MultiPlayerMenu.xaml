@@ -1,0 +1,40 @@
+﻿<Window x:Class="MazeGUI.MultiPlayerMenu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MazeGUI"
+        mc:Ignorable="d"
+        Title="MultiPlayerMenu" Height="400" Width="400" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <StackPanel Margin="0,0,0.6,-4.6" Background="#0f1a1e">
+            <TextBox x:Name="title" Foreground="Goldenrod"  TextBlock.FontStyle="Italic" Height="61" TextWrapping="Wrap" Text="&#xD;&#xA;Multi Play Menu" HorizontalContentAlignment="Center"
+                 FontSize="20" Background="#0f1a1e" BorderThickness="0"/>
+            <StackPanel Orientation="Horizontal" Margin="0,0,-0.2,0" Height="40">
+                <Label Foreground="Goldenrod" TextBlock.FontStyle="Italic" Content="List of games:" Margin="3" FontSize="18" />
+                <ComboBox x:Name="cboSearchAlgo" Margin="5,5,12,9" HorizontalAlignment="Left"
+                    SelectedIndex="{Binding SearchAlgorithm}" IsEditable="False" Width="158"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="JoinBtn" Foreground="Goldenrod" TextBlock.FontStyle="Italic" BorderBrush="Goldenrod" Background="LightGoldenrodYellow" HorizontalAlignment="Center" Margin="130,6,6,6" Width="97" 
+                    FontSize="16" Content="Join Game" BorderThickness="1" Height="35" Click="btnJoin_Click" VerticalAlignment="Bottom" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" RenderTransformOrigin="1.383,0.257" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Foreground="Goldenrod" TextBlock.FontStyle="Italic"  Content="Maze Name:" Margin="5,5,12,9" FontSize="18" />
+                <TextBox Foreground="LightGoldenrodYellow" Background="#0f1a1e" Text="{Binding MazeName, Mode=TwoWay}" FontSize="16" Margin="6" VerticalAlignment="Center" Height="30" Width="156"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Foreground="Goldenrod" TextBlock.FontStyle="Italic" Content="Maze Rows:" Margin="5,5,12,9" FontSize="18" />
+                <TextBox Foreground="LightGoldenrodYellow" Background="#0f1a1e" Text="{Binding MazeRows, Mode=TwoWay}" FontSize="16" Margin="13" VerticalAlignment="Center" Height="30" Width="156"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="72">
+                <Label Content="Maze Cols:" TextBlock.FontStyle="Italic" Foreground="Goldenrod" Margin="5,5,12,9" VerticalContentAlignment="Center" FontSize="18" />
+                <TextBox Foreground="LightGoldenrodYellow" Background="#0f1a1e" Text="{Binding MazeCols, Mode=TwoWay}" FontSize="16" Margin="20" VerticalContentAlignment="Center" Height="30" Width="156"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="btnStartGame" Foreground="Goldenrod" TextBlock.FontStyle="Italic" BorderBrush="Goldenrod" Background="LightGoldenrodYellow" HorizontalAlignment="Center" Margin="130,6,6,6" Width="97"
+                    FontSize="16" Content="Start Game" BorderThickness="1" Height="35" Click="btnStartGame_Click" VerticalAlignment="Bottom" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" RenderTransformOrigin="1.383,0.257" />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

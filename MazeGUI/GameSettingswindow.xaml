@@ -5,9 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MazeGUI"
         mc:Ignorable="d"
-        Title="GameSettingswindow" Height="600" Width="600"
+        Title="GameSettingswindow" Height="210" Width="600" Background="#0f1a1e"
 WindowStartupLocation="CenterScreen">
-    <Grid Margin="30,20,40,40" TextBlock.FontSize="14" TextBlock.FontStyle="Italic">
+    <Grid Margin="10,10,10,10" TextBlock.FontSize="14" TextBlock.FontStyle="Italic" >
+        <Grid.Background>
+            <SolidColorBrush Color="#0f1a1e" />
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -20,24 +23,24 @@ WindowStartupLocation="CenterScreen">
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock> Server IP:</TextBlock>
-        <TextBox x:Name="txtIP" Grid.Column="1"  Text="{Binding Path= ServerIP, Mode=TwoWay}"></TextBox>
-        <TextBlock Grid.Row="1">Server Port:</TextBlock>
-        <TextBox x:Name="txtPort" Grid.Row="1" Grid.Column="2" Text="{Binding Path=ServerPort, Mode=TwoWay}"></TextBox>
-        <TextBlock Grid.Row="2">Maze rows:</TextBlock>
-        <TextBox x:Name="txtRows" Grid.Row="2" Grid.Column="2" Text="{Binding Path = MazeRows, Mode=TwoWay}"></TextBox>
-        <TextBlock Grid.Row="3">Maze columns:</TextBlock>
-        <TextBox x:Name="txtCols" Grid.Row="3" Grid.Column="2" Text="{Binding MazeCols, Mode=TwoWay}"></TextBox>
-        <TextBlock Grid.Row="4">Search algorithm:</TextBlock>
+        <TextBlock Foreground="Goldenrod"> Server IP:</TextBlock>
+        <TextBox x:Name="txtIP" Grid.Column="1" Foreground="LightYellow" Background="#0f1a1e" Text="{Binding Path= ServerIP, Mode=TwoWay}"></TextBox>
+        <TextBlock Grid.Row="1" Foreground="Goldenrod">Server Port:</TextBlock>
+        <TextBox x:Name="txtPort" Grid.Row="1" Foreground="LightYellow" Background="#0f1a1e" Grid.Column="2" Text="{Binding Path=ServerPort, Mode=TwoWay}"></TextBox>
+        <TextBlock Grid.Row="2" Foreground="Goldenrod">Maze rows:</TextBlock>
+        <TextBox x:Name="txtRows" Grid.Row="2" Foreground="LightYellow" Background="#0f1a1e" Grid.Column="2" Text="{Binding Path = MazeRows, Mode=TwoWay}"></TextBox>
+        <TextBlock Grid.Row="3" Foreground="Goldenrod">Maze columns:</TextBlock>
+        <TextBox x:Name="txtCols" Grid.Row="3" Foreground="LightYellow" Grid.Column="2" Background="#0f1a1e" Text="{Binding MazeCols, Mode=TwoWay}"></TextBox>
+        <TextBlock Grid.Row="4" Foreground="Goldenrod">Search algorithm:</TextBlock>
         <ComboBox x:Name="cboSearchAlgo" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" BorderBrush="Goldenrod" Background="LightGoldenrodYellow"
 SelectedIndex="{Binding SearchAlgorithm, Mode=OneWay}" IsEditable="False" Margin="11,0,0,0" Width="18">
             <ComboBoxItem>BFS</ComboBoxItem>
             <ComboBoxItem>DFS</ComboBoxItem>
             <ComboBox Width="120"/>
         </ComboBox>
-        <Button x:Name="btnOk" Grid.Row="5" HorizontalAlignment="Center" TextBlock.FontStyle="Italic" BorderBrush="Goldenrod" Background="LightGoldenrodYellow"
+        <Button x:Name="btnOk" Grid.Row="5" Foreground="Goldenrod" HorizontalAlignment="Center" TextBlock.FontStyle="Italic" BorderBrush="Goldenrod" Background="LightGoldenrodYellow"
 Grid.ColumnSpan="1" Click="btnOK_Click" Margin="5" Padding="5">OK</Button>
-        <Button x:Name="btnCancel" Grid.Row="5" HorizontalAlignment="Center" TextBlock.FontStyle="Italic" BorderBrush="Goldenrod" Background="LightGoldenrodYellow"
+        <Button x:Name="btnCancel" Grid.Row="5" Foreground="Goldenrod" HorizontalAlignment="Center" TextBlock.FontStyle="Italic" BorderBrush="Goldenrod" Background="LightGoldenrodYellow"
 Grid.ColumnSpan="2" Click="btnCancel_Click" Margin="5" Padding="5">Cancel</Button>
     </Grid>
 </Window>

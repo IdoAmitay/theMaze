@@ -27,7 +27,7 @@ namespace MazeGUI
         private int rows;
         private int cols;
 
-        public SinglePlayerVM() 
+        public SinglePlayerVM()
         {
             // this.model = new ClientProgram.Client();
             this.model = ClientProgram.Client.Instance;
@@ -38,7 +38,7 @@ namespace MazeGUI
                 };
             Dictionary<string, Action<string>> c = new Dictionary<string, Action<string>>();
             c.Add("generate", this.model.UpdateMaze);
-           // c.Add("start", this.model.UpdateMaze);
+            // c.Add("start", this.model.UpdateMaze);
             c.Add("join", this.model.UpdateMaze);
             c.Add("start", this.model.UpdateMaze);
             c.Add("play", this.model.UpdatePositionFromJson);
@@ -47,6 +47,16 @@ namespace MazeGUI
             this.model.Commands = c;
 
         }
+        public string Solution
+        {
+            get
+            {
+                return this.model.Solution;
+            }
+            set { }
+        }
+            
+
         public MazeLib.Maze VM_Maze
         {
             get
@@ -121,10 +131,13 @@ namespace MazeGUI
             
            // NotifyPropertyChanged("MyMaze"); /////////
         }
-        public void SolveMaze()
+        public void GetSolution()
         {
-            this.model.TalkWithServer("solve " + name + " " + ConfigurationManager.AppSettings["Algorithm"].ToString());
-            int i = 0;
+            this.model.TalkWithServer("solve " + name + " " + ConfigurationManager.AppSettings["SearchAlgorithm"].ToString());
+        }
+        /*public void SolveMaze()
+        {
+           // int i = 0;
             while (i < this.model.Solution.Length)
             {
                 int direction = int.Parse(this.model.Solution[i].ToString());
@@ -145,14 +158,38 @@ namespace MazeGUI
                         break;
                 }
                 this.Move(dir);
+                i++;
             }
            // NotifyPropertyChanged("Solution");
-        }
+        }*/
         public void Move (string direction)
         {
             this.model.TalkWithServer("smove " + direction);
           //  NotifyPropertyChanged("PlayerPosition");
         }
-
+        public void Restart()
+        {
+            this.model.CurPos = this.model.MyMaze.InitialPos;
+        }
+        public string ConvertStep (int direction)
+        {
+            string dir;
+            switch (direction)
+            {
+                case 0:
+                    dir = "left";
+                    break;
+                case 1:
+                    dir = "right";
+                    break;
+                case 2:
+                    dir = "down";
+                    break;
+                default:
+                    dir = "up";
+                    break;
+            }
+            return dir;
+        }
     }
 }

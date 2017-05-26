@@ -79,5 +79,10 @@ namespace MazeGUI
 
 
         }
+
+        private void txtCols_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }
