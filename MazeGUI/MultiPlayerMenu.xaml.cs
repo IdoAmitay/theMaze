@@ -43,6 +43,18 @@ namespace MazeGUI
             DependencyProperty.Register("Games", typeof(List<string>), typeof(MultiPlayerMenu), new PropertyMetadata(default(List<string>)));
 
 
+
+        public string MazeName
+        {
+            get { return (string)GetValue(MazeNameProperty); }
+            set { SetValue(MazeNameProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for MazeName.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty MazeNameProperty =
+            DependencyProperty.Register("MazeName", typeof(string), typeof(MultiPlayerMenu), new PropertyMetadata(default(string)));
+
+
         private void btnJoin_Click(object sender, RoutedEventArgs e)
         {
 
@@ -50,7 +62,9 @@ namespace MazeGUI
 
         private void btnStartGame_Click(object sender, RoutedEventArgs e)
         {
-
+            MultiPlayerWindow mp = new MultiPlayerWindow(MazeName,Rows,Cols);
+            this.Close();
+            mp.Show();
         }
     }
 }

@@ -124,7 +124,7 @@ namespace MazeGUI
         }
         public void StartGame (string name, int rows, int cols)
         {
-            this.model.sendCommand("start " + name + " " + rows.ToString() + " " + cols.ToString());
+            this.model.TalkWithServer("start " + name + " " + rows.ToString() + " " + cols.ToString());
             NotifyPropertyChanged("MyMaze");//////
             NotifyPropertyChanged("PlayerPosition");//////
         }
