@@ -252,29 +252,38 @@ namespace ClientProgram
         }
         public void UpdatePosition (string direction)
         {
-            if (direction.Equals("up") 
-                && this.MyMaze[this.CurPos.Row - 1, this.CurPos.Col] == MazeLib.CellType.Free)
+            if (direction.Equals("up") && this.CurPos.Row - 1 >= 0)
             {
-                this.CurPos = new MazeLib.Position(this.CurPos.Row - 1, this.CurPos.Col);
-                
+
+                if (this.MyMaze[this.CurPos.Row - 1, this.CurPos.Col] == MazeLib.CellType.Free)
+                {
+                    this.CurPos = new MazeLib.Position(this.CurPos.Row - 1, this.CurPos.Col);
+
+                }
             }
-            if(direction.Equals("down")
-                && this.MyMaze[this.CurPos.Row + 1, this.CurPos.Col] == MazeLib.CellType.Free)
+            if (direction.Equals("down") && this.CurPos.Row + 1 < this.MyMaze.Rows)
             {
-                this.CurPos = new MazeLib.Position(this.CurPos.Row + 1, this.CurPos.Col);
-                
+                if (this.MyMaze[this.CurPos.Row + 1, this.CurPos.Col] == MazeLib.CellType.Free)
+                {
+                    this.CurPos = new MazeLib.Position(this.CurPos.Row + 1, this.CurPos.Col);
+
+                }
             }
-            if (direction.Equals("left")
-                && this.MyMaze[this.CurPos.Row, this.CurPos.Col - 1] == MazeLib.CellType.Free)
+            if (direction.Equals("left") && this.CurPos.Col - 1 >= 0)
             {
-                this.CurPos = new MazeLib.Position(this.CurPos.Row , this.CurPos.Col - 1);
-                
+                if (this.MyMaze[this.CurPos.Row, this.CurPos.Col - 1] == MazeLib.CellType.Free)
+                {
+                    this.CurPos = new MazeLib.Position(this.CurPos.Row, this.CurPos.Col - 1);
+
+                }
             }
-            if (direction.Equals("right")
-                && this.MyMaze[this.CurPos.Row, this.CurPos.Col + 1] == MazeLib.CellType.Free)
+            if (direction.Equals("right") && this.CurPos.Col + 1 < this.MyMaze.Cols)
             {
-                this.CurPos = new MazeLib.Position(this.CurPos.Row, this.CurPos.Col + 1);
-                
+                if (this.MyMaze[this.CurPos.Row, this.CurPos.Col + 1] == MazeLib.CellType.Free)
+                {
+                    this.CurPos = new MazeLib.Position(this.CurPos.Row, this.CurPos.Col + 1);
+
+                }
             }
 
         }
