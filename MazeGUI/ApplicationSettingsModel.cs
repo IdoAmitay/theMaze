@@ -10,6 +10,19 @@ namespace MazeGUI
 {
     class ApplicationSettingsModel : ISettingsModel
     {
+        private static ApplicationSettingsModel instance;
+        private ApplicationSettingsModel () { }
+        public static ApplicationSettingsModel Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new ApplicationSettingsModel();
+                }
+                return instance;
+            }
+        }
         public string ServerIP
         {
             get { return Properties.Settings.Default.ServerIP; }
@@ -75,5 +88,6 @@ namespace MazeGUI
         {
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
         }
+        
     }
 }

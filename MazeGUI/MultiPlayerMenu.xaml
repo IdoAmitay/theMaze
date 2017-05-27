@@ -24,13 +24,13 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label Foreground="Goldenrod" TextBlock.FontStyle="Italic" Content="Maze Rows:" Margin="5,5,12,9" FontSize="18" />
-                <TextBox Foreground="LightGoldenrodYellow" Background="#0f1a1e" Text="{Binding Rows,Mode=TwoWay}" FontSize="16" Margin="13" VerticalAlignment="Center" Height="30" Width="156" RenderTransformOrigin="0.5,0.5">
+                <TextBox Foreground="LightGoldenrodYellow" Background="#0f1a1e" Text="{Binding Rows, Mode=TwoWay}" FontSize="16" Margin="13" VerticalAlignment="Center" Height="30" Width="156" RenderTransformOrigin="0.513,0.424">
                     <TextBox.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
                             <SkewTransform/>
-                            <RotateTransform Angle="-1.098"/>
-                            <TranslateTransform/>
+                            <RotateTransform Angle="0.389"/>
+                            <TranslateTransform X="-0.045" Y="-0.039"/>
                         </TransformGroup>
                     </TextBox.RenderTransform>
                 </TextBox>
@@ -43,6 +43,7 @@
                 <Button x:Name="btnStartGame" Foreground="Goldenrod" TextBlock.FontStyle="Italic" BorderBrush="Goldenrod" Background="LightGoldenrodYellow" HorizontalAlignment="Center" Margin="130,6,6,6" Width="97"
                     FontSize="16" Content="Start Game" BorderThickness="1" Height="35" Click="btnStartGame_Click" VerticalAlignment="Bottom" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" RenderTransformOrigin="1.383,0.257" />
             </StackPanel>
+            <Label Content="waiting for opponent..." Height="29" Margin="0,0,237,0" FontWeight="Bold" FontStyle="Italic" Foreground="Goldenrod" Visibility="{Binding Visible}"/>
         </StackPanel>
     </Grid>
 </Window>

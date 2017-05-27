@@ -42,12 +42,12 @@ namespace MazeGUI
                 this.vm.VM_MazeName = value;
             }
         }*/
-        public SinglePlayerWindow(string name, int rows, int cols)
+        public SinglePlayerWindow()
         {
             InitializeComponent();
-            vm = new SinglePlayerVM();
+            // vm = new SinglePlayerVM();
+            vm = SinglePlayerVM.Instance;
             this.DataContext = vm;
-            vm.CrerateMaze(name, rows, cols);
           //  this.Show();
 
 

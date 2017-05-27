@@ -9,6 +9,7 @@ namespace MazeGUI
 {
     class SettingsViewModel : ViewModel 
     {
+
         private ISettingsModel model;
         public SettingsViewModel(ISettingsModel model)
         {

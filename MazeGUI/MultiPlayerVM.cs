@@ -10,6 +10,7 @@ namespace MazeGUI
     class MultiPlayerVM : ViewModel
     {
         IMvvmModel model;
+        private static MultiPlayerVM instance;
         public MazeLib.Position OppPos
         {
             get
@@ -34,7 +35,7 @@ namespace MazeGUI
                 NotifyPropertyChanged("Games");
             }
         }
-        public MultiPlayerVM()
+        private MultiPlayerVM()
         {
             // this.model = new ClientProgram.Client();
             this.model = ClientProgram.Client.Instance;
@@ -51,7 +52,7 @@ namespace MazeGUI
             c.Add("play", this.model.UpdatePositionFromJson);
             c.Add("close", this.model.UpdateMaze);
             // c.Add("solve", this.model.UpdateSolution);
-            c.Add("List", this.model.GetGamesList);
+            c.Add("list", this.model.GetGamesList);
             this.model.Commands = c;
             
         }
@@ -146,7 +147,18 @@ namespace MazeGUI
         }
         public void List ()
         {
-            this.model.TalkWithServer("List");
+            this.model.TalkWithServer("list");
+        }
+        public static MultiPlayerVM Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new MultiPlayerVM();
+                }
+                return instance;
+            }
         }
         
     }

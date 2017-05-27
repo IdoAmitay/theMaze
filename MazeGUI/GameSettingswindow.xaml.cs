@@ -23,7 +23,7 @@ namespace MazeGUI
         private SettingsViewModel vm;
         public GameSettingswindow()
         {
-            ISettingsModel model = new ApplicationSettingsModel();
+            ISettingsModel model = ApplicationSettingsModel.Instance; ;
             InitializeComponent();
             vm = new SettingsViewModel(model);
             this.DataContext = vm;

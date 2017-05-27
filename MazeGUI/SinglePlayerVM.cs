@@ -26,9 +26,10 @@ namespace MazeGUI
         private string name;
         private int rows;
         private int cols;
-
-        public SinglePlayerVM()
+        private static SinglePlayerVM instance;
+        private SinglePlayerVM()
         {
+            
             // this.model = new ClientProgram.Client();
             this.model = ClientProgram.Client.Instance;
             this.model.PropertyChanged +=
@@ -46,6 +47,17 @@ namespace MazeGUI
             c.Add("solve", this.model.UpdateSolution);
             this.model.Commands = c;
 
+        }
+        public static SinglePlayerVM Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new SinglePlayerVM();
+                }
+                return instance;
+            }
         }
         public string Solution
         {

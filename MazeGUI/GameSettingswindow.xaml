@@ -33,10 +33,9 @@ WindowStartupLocation="CenterScreen">
         <TextBox x:Name="txtCols" Grid.Row="3" Foreground="LightYellow" Grid.Column="2" Background="#0f1a1e" Text="{Binding MazeCols, Mode=TwoWay}"></TextBox>
         <TextBlock Grid.Row="4" Foreground="Goldenrod">Search algorithm:</TextBlock>
         <ComboBox x:Name="cboSearchAlgo" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" BorderBrush="Goldenrod" Background="LightGoldenrodYellow"
-SelectedIndex="{Binding SearchAlgorithm, Mode=OneWay}" IsEditable="False" Margin="11,0,0,0" Width="18">
+SelectedIndex="{Binding SearchAlgorithm, Mode=TwoWay}" IsEditable="False" Margin="11,0,0,0" Width="125">
             <ComboBoxItem>BFS</ComboBoxItem>
             <ComboBoxItem>DFS</ComboBoxItem>
-            <ComboBox Width="120"/>
         </ComboBox>
         <Button x:Name="btnOk" Grid.Row="5" Foreground="Goldenrod" HorizontalAlignment="Center" TextBlock.FontStyle="Italic" BorderBrush="Goldenrod" Background="LightGoldenrodYellow"
 Grid.ColumnSpan="1" Click="btnOK_Click" Margin="5" Padding="5">OK</Button>

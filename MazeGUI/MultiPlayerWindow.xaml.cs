@@ -20,12 +20,13 @@ namespace MazeGUI
     public partial class MultiPlayerWindow : Window
     {
         MultiPlayerVM vm;
-        public MultiPlayerWindow(string name, int rows, int cols)
+        public MultiPlayerWindow()
         {
             InitializeComponent();
-            vm = new MultiPlayerVM();
+            //vm = new MultiPlayerVM();
+            vm = MultiPlayerVM.Instance;
             this.DataContext = vm;
-            vm.StartGame(name, rows, cols);
+            //vm.StartGame(name, rows, cols);
         }
 
         private void btnBackToMainMenu_Click(object sender, RoutedEventArgs e)

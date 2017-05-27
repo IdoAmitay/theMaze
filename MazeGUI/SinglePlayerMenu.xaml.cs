@@ -69,15 +69,16 @@ namespace MazeGUI
             this.DefaultRows = Properties.Settings.Default.MazeRows;
             this.DefaultCols = Properties.Settings.Default.MazeCols;
             InitializeComponent();
-            vm = new SinglePlayerVM(/*new SinglePlayerModel(vm.VM_MazeName, vm.VM_MazeRows, vm.VM_MazeCols)*/);
+            //vm = new SinglePlayerVM(/*new SinglePlayerModel(vm.VM_MazeName, vm.VM_MazeRows, vm.VM_MazeCols)*/);
+            vm = SinglePlayerVM.Instance;
             this.DataContext = this;
         }
 
         private void btnOK_Click(object sender, RoutedEventArgs e)
         {
             // Window singlePlayerGame = new SinglePlayerWindow(Name, Rows,Cols);
-             Window singlePlayerGame = new SinglePlayerWindow(Name, DefaultRows,DefaultCols);
-
+             Window singlePlayerGame = new SinglePlayerWindow();
+            vm.CrerateMaze(Name, DefaultRows, DefaultCols);
             this.Close();
             singlePlayerGame.Show();
 
