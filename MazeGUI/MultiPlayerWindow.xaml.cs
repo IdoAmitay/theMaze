@@ -67,14 +67,14 @@ namespace MazeGUI
                     {
                         MessageBoxResult result = MessageBox.Show("Harry Potter Won!", "Game Over");
                     }
-                    else if (vm.VM_OppPos.Equals(vm.VM_GoalPos))
+                     if (vm.VM_OppPos.Equals(vm.VM_GoalPos))
                     {
-                        MessageBoxResult result = MessageBox.Show("You Lost to Darco", "Game Over");
+                        MessageBoxResult result = MessageBox.Show("You Lost to Darco...", "Game Over");
                     }
 
                     MainWindow mainWin = new MainWindow();
                     mainWin.Show();
-                    this.Hide();
+                    this.Close();
                 }
                 /*if (vm.VM_SecondClientClosed == true)
                 {
@@ -154,14 +154,14 @@ namespace MazeGUI
             }
            // myGame.Draw(vm.VM_MazeString, vm.VM_MazeRows, vm.VM_MazeCols, vm.VM_CurPos, vm.VM_GoalPos, "resources/harry potter.jpg");
            // yourGame.Draw(vm.VM_MazeString, vm.VM_MazeRows, vm.VM_MazeCols, vm.VM_OppPos, vm.VM_GoalPos, "resources/malfoy 2.jpg");
-            if (vm.VM_CurPos.Equals(vm.VM_GoalPos))
+           /* if (vm.VM_CurPos.Equals(vm.VM_GoalPos))
             {
                 MessageBoxResult result = MessageBox.Show("Harry Potter Win!", "Darco Malfoy win!", MessageBoxButton.OK, MessageBoxImage.Information);
                 MainWindow mw = new MainWindow();
                 mw.Show();
                 //this.Hide();
                 this.Close();
-            }
+            }*/
         }
 
     }

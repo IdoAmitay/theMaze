@@ -45,14 +45,14 @@ namespace MazeGUI
 
         public override void TalkWithServer(string myCommand)
         {
-            string[] arr = myCommand.Split(' ');
+           /* string[] arr = myCommand.Split(' ');
             this.command = arr[0];
             if (command.Equals("smove"))
             {
                 this.UpdatePosition(ref this.curPos, arr[1]);
                 return;
             }
-            Task task = new Task(this.CommunicateWithServer);
+            Task task = new Task(this.CommunicateWithServer);*/
             //checking if the client is connected
             if (!this.IsConnected())
             {
@@ -61,7 +61,7 @@ namespace MazeGUI
 
             }
             this.sendCommand(myCommand);
-            task.Start();
+           /* task.Start();
             if (!this.command.Equals("play"))
             {
                  task.Wait();
@@ -74,7 +74,7 @@ namespace MazeGUI
               //  task = new Task(ContinueConnection);
                 this.command = "play";
                // task.Start();
-            }
+            }*/
             
             
         }
@@ -100,6 +100,14 @@ namespace MazeGUI
                 temp.Add(arr[i]);
             }
             Games = temp;
+        }
+        public void UpdateCurPos (string move)
+        {
+            this.UpdatePosition(ref this.curPos, move);
+        }
+        public void UpdateOppPos(string move)
+        {
+            this.UpdatePosition(ref this.oppPos, move);
         }
 
     }

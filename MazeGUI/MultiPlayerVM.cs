@@ -130,25 +130,58 @@ namespace MazeGUI
         }
         public void StartGame (string name, int rows, int cols)
         {
-            this.model.TalkWithServer("start " + name + " " + rows.ToString() + " " + cols.ToString());
+            //this.model.TalkWithServer("start " + name + " " + rows.ToString() + " " + cols.ToString());
+            if (!this.model.IsConnected())
+            {
+                //connecting the client
+                this.model.ConnectToserver();
+
+            }
+            this.model.CurCommand = "start";
+            this.model.sendCommand("start " + name + " " + rows.ToString() + " " + cols.ToString());
+            this.model.CommunicateWithServer();
             NotifyPropertyChanged("MyMaze");//////
             NotifyPropertyChanged("CurPos");//////
+            NotifyPropertyChanged("OppPos");//////
+
             Task task = new Task(this.model.ContinueConnection);
             task.Start();
         }
         public void JoinGame(string game)
         {
-            this.model.TalkWithServer("join " + game);
+            //this.model.TalkWithServer("join " + game);
+            if (!this.model.IsConnected())
+            {
+                //connecting the client
+                this.model.ConnectToserver();
+
+            }
+            this.model.CurCommand = "join";
+
+            this.model.sendCommand("join " + game);
+            this.model.CommunicateWithServer();
             NotifyPropertyChanged("MyMaze");//////
             NotifyPropertyChanged("CurPos");//////
+            NotifyPropertyChanged("OppPos");//////
+
             Task task = new Task(this.model.ContinueConnection);
             task.Start();
         }
         public void Play (string move)
         {
-            this.model.TalkWithServer("smove " + move);
+            if (!this.model.IsConnected())
+            {
+                //connecting the client
+                this.model.ConnectToserver();
+
+            }
+            // this.model.TalkWithServer("smove " + move);
+            this.model.CurCommand = "play";
+            //this.model.UpdatePosition (this.model.CurPos, move);
+            this.model.UpdateCurPos(move);
             NotifyPropertyChanged("CurPos");
-            this.model.TalkWithServer("play " + move);
+            //this.model.TalkWithServer("play " + move);
+            this.model.sendCommand("play " + move);
         }
         public void Close ()
         {
@@ -157,7 +190,17 @@ namespace MazeGUI
         }
         public void List ()
         {
-            this.model.TalkWithServer("list");
+            //this.model.TalkWithServer("list");
+            if (!this.model.IsConnected())
+            {
+                //connecting the client
+                this.model.ConnectToserver();
+
+            }
+            this.model.CurCommand = "list";
+
+            this.model.sendCommand("list");
+            this.model.CommunicateWithServer();
         }
         public static MultiPlayerVM Instance
         {

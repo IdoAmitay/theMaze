@@ -30,6 +30,17 @@ namespace MazeGUI
         protected string mazeName;
 
        public Dictionary<string, Action<string>> Commands { get; set; }
+        public string CurCommand
+        {
+            get
+            {
+                return this.command;
+            }
+            set
+            {
+                this.command = value;
+            }
+        }
         public Maze MyMaze
         {
             get
