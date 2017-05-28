@@ -9,9 +9,10 @@ namespace MazeGUI
 {
     class MultiPlayerVM : ViewModel
     {
-        IMvvmModel model;
+        // IMvvmModel model;
+        AbstractMultiPlayerClient model;
         private static MultiPlayerVM instance;
-        public MazeLib.Position OppPos
+        public MazeLib.Position VM_OppPos
         {
             get
             {
@@ -38,7 +39,8 @@ namespace MazeGUI
         private MultiPlayerVM()
         {
             // this.model = new ClientProgram.Client();
-            this.model = ClientProgram.Client.Instance;
+            //this.model = ClientProgram.Client.Instance;
+            this.model = MyMultiPlayerClient.Instance;
             this.model.PropertyChanged +=
                 delegate (Object sender, PropertyChangedEventArgs e)
                 {
@@ -115,6 +117,9 @@ namespace MazeGUI
             get { return this.model.CurPos; }
             set { }
         }
+
+        
+
         public string VM_MazeString
         {
             get { return this.model.MyMaze.ToString(); }
@@ -127,18 +132,23 @@ namespace MazeGUI
         {
             this.model.TalkWithServer("start " + name + " " + rows.ToString() + " " + cols.ToString());
             NotifyPropertyChanged("MyMaze");//////
-            NotifyPropertyChanged("PlayerPosition");//////
+            NotifyPropertyChanged("CurPos");//////
+            Task task = new Task(this.model.ContinueConnection);
+            task.Start();
         }
         public void JoinGame(string game)
         {
-            this.model.sendCommand("join " + game);
+            this.model.TalkWithServer("join " + game);
             NotifyPropertyChanged("MyMaze");//////
-            NotifyPropertyChanged("PlayerPosition");//////
+            NotifyPropertyChanged("CurPos");//////
+            Task task = new Task(this.model.ContinueConnection);
+            task.Start();
         }
         public void Play (string move)
         {
-            this.model.sendCommand("play " + move);
-            NotifyPropertyChanged("PlayerPosition");
+            this.model.TalkWithServer("smove " + move);
+            NotifyPropertyChanged("CurPos");
+            this.model.TalkWithServer("play " + move);
         }
         public void Close ()
         {

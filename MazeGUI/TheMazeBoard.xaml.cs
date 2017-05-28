@@ -107,6 +107,18 @@ namespace MazeGUI
 
 
 
+       /* public string OppPos
+        {
+            get { return (string)GetValue(OppPosProperty); }
+            set { SetValue(OppPosProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for OppPos.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty OppPosProperty =
+            DependencyProperty.Register("OppPos", typeof(string), typeof(TheMazeBoard), new PropertyMetadata(default(string)));*/
+
+
+
         public void Draw(string recsStr, int rows, int cols, Position curPos, Position goalPos, string player)
         {
             string s = MazeName;

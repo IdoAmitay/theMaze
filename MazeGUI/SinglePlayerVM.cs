@@ -22,16 +22,18 @@ namespace MazeGUI
              //this.model.sendCommand
          }*/
         // SinglePlayerModel model;
-        IMvvmModel model;
+        //IMvvmModel model;
+        AbstractSinglePlayerClient model;
         private string name;
         private int rows;
         private int cols;
         private static SinglePlayerVM instance;
         private SinglePlayerVM()
         {
-            
+
             // this.model = new ClientProgram.Client();
-            this.model = ClientProgram.Client.Instance;
+            // this.model = ClientProgram.Client.Instance;
+            this.model = MySinglePlayerClient.Instance;
             this.model.PropertyChanged +=
                 delegate (Object sender, PropertyChangedEventArgs e)
                 {
@@ -42,7 +44,7 @@ namespace MazeGUI
             // c.Add("start", this.model.UpdateMaze);
             c.Add("join", this.model.UpdateMaze);
             c.Add("start", this.model.UpdateMaze);
-            c.Add("play", this.model.UpdatePositionFromJson);
+           // c.Add("play", this.model.UpdatePositionFromJson);
             c.Add("close", this.model.UpdateMaze);
             c.Add("solve", this.model.UpdateSolution);
             this.model.Commands = c;

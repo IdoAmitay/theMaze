@@ -25,10 +25,10 @@ namespace MazeGUI
         {
 
             InitializeComponent();
-            vm = MultiPlayerVM.Instance;
+            this.vm = MultiPlayerVM.Instance;
+            this.vm.List();
             this.DataContext = this;
             this. Visible= "Hidden";
-            this.vm.List();
            // this.Games = this.vm.Games;
             this. Rows = Properties.Settings.Default.MazeRows;
             this.Cols = Properties.Settings.Default.MazeCols;
@@ -82,20 +82,28 @@ namespace MazeGUI
 
         private void btnJoin_Click(object sender, RoutedEventArgs e)
         {
-            MultiPlayerWindow mp = new MultiPlayerWindow();
             this.vm.JoinGame(this.cboListOfGames.SelectedItem.ToString());
+
+            MultiPlayerWindow mp = new MultiPlayerWindow();
             this.Close();
             mp.Show();
+        //    mp.func();
+            
         }
 
         private void btnStartGame_Click(object sender, RoutedEventArgs e)
         {
             this.Visible = "Visible";
             //this.Show();
-            MultiPlayerWindow mp = new MultiPlayerWindow();
+
             this.vm.StartGame(MazeName, Rows, Cols);
+            MultiPlayerWindow mp = new MultiPlayerWindow();
             this.Close();
             mp.Show();
+           // mp.func();
+            
+
+
         }
     }
 }

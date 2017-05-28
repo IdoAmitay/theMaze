@@ -23,11 +23,16 @@ namespace MazeGUI
         private SettingsViewModel vm;
         public GameSettingswindow()
         {
-            ISettingsModel model = ApplicationSettingsModel.Instance; ;
+           /* ISettingsModel model = ApplicationSettingsModel.Instance; ;
+            InitializeComponent();
+            vm = new SettingsViewModel(model);
+            this.DataContext = vm;*/
+
+            ISettingsModel model = new ApplicationSettingsModel();
             InitializeComponent();
             vm = new SettingsViewModel(model);
             this.DataContext = vm;
-           // ServerIP = ConfigurationManager.AppSettings["ServerIP"];
+            // ServerIP = ConfigurationManager.AppSettings["ServerIP"];
         }
         private void btnOK_Click(object sender, RoutedEventArgs e)
         {

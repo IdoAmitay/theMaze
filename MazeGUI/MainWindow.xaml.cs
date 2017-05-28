@@ -1,5 +1,4 @@
-﻿using Microsoft.Win32;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,17 +20,19 @@ namespace MazeGUI
     /// </summary>
     public partial class MainWindow : Window
     {
+        BitmapImage Image { get; set; }
         public MainWindow()
         {
             InitializeComponent();
+            this.Background = new ImageBrush(new BitmapImage(new Uri(@"pack://application:,,,/Back/Harry.png")));
+            this.DataContext = this;
         }
 
         private void Button_Click_Single(object sender, RoutedEventArgs e)
         {
             SinglePlayerMenu sp = new SinglePlayerMenu();
-            this.Close();
-
             sp.Show();
+            this.Hide();
         }
 
         private void Button_Click_Settings(object sender, RoutedEventArgs e)
@@ -40,7 +41,7 @@ namespace MazeGUI
             // vm.SaveSettings();
             Window win = new GameSettingswindow();
             win.Show();
-            this.Hide();
+            this.Close();
 
 
         }

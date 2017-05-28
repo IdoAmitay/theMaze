@@ -6,22 +6,22 @@
         xmlns:local="clr-namespace:MazeGUI"
         xmlns:Controls ="clr-namespace:MazeGUI"
         mc:Ignorable="d"
-        Title="MultiPlayerWindow" Height="600" Width="900" WindowStartupLocation="CenterScreen" Background="#0f1a1e">
+        Title="{Binding VM_MazeName}"  Height="600" Width="900" WindowStartupLocation="CenterScreen" Background="#0f1a1e" KeyDown="Window_KeyDown">
     <Grid>
         <Canvas Margin="401,-29,-401,29">
-            <Button Canvas.Top="82" Content="Back to main menu" TextBlock.FontStyle="Italic" BorderBrush="Goldenrod" Foreground="Goldenrod" Background="LightGoldenrodYellow" Click="btnBackToMainMenu_Click" />
+            <Button Canvas.Top="82" Content="Back to main menu" TextBlock.FontStyle="Italic" BorderBrush="Goldenrod" Foreground="Goldenrod" Background="LightGoldenrodYellow" Click="btnBackToMainMenu_Click" Canvas.Left="-7" />
         </Canvas>
         <StackPanel Orientation="Horizontal">
             <Controls:TheMazeBoard x:Name="myGame"  Height="400" Width="400" Loaded="myGame_Loaded"
-                            HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="0,0,0,0" Margin="50,65,40,0" 
+                            HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="0,0,0,0" Margin="45,105,40,52" 
                             MazeName="{Binding VM_MazeName}" MazeRows="{Binding VM_MazeRows}" MazeCols="{Binding VM_MazeCols}" 
-                            InitialPos="{Binding VM_InitialPos}" GoalPos="{Binding VM_GoalPos}"/>
+                            InitialPos="{Binding VM_InitialPos}" GoalPos="{Binding VM_GoalPos}" CurPos="{Binding VM_CurPos}"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal">
             <Controls:TheMazeBoard x:Name="yourGame"  Height="400" Width="400" Loaded="yourGame_Loaded"
-                            HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="0,0,0,0" Margin="450,117,40,52" 
+                            HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="0,0,0,0" Margin="446,105,40,52" 
                             MazeName="{Binding VM_MazeName}" MazeRows="{Binding VM_MazeRows}" MazeCols="{Binding VM_MazeCols}" 
-                            InitialPos="{Binding VM_InitialPos}" GoalPos="{Binding VM_GoalPos}"/>
+                            InitialPos="{Binding VM_InitialPos}" GoalPos="{Binding VM_GoalPos}" CurPos="{Binding VM_OppPos}"/>
         </StackPanel>
     </Grid>
 </Window>

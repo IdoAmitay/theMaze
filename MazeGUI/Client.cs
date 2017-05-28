@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
 using MazeLib;
+using System.Threading;
 
 namespace ClientProgram
 {
@@ -190,14 +191,17 @@ namespace ClientProgram
                 do
                 {
                     //appending the server's answer to the last command sent
-                   // result += this.breader.ReadString();
                     result.Append(this.breader.ReadString());
                 } while (this.stream.DataAvailable);
                 //printing the message to the client
-                //MessageReceived(result.ToString());
                 if (Commands.ContainsKey(this.command))
                 {
                     Commands[this.command](result.ToString());
+                    if (this.command.Equals("start") || this.command.Equals("join"))
+                    {
+                        this.command = "play";
+                        break;
+                    }
                 }
                
                 
@@ -256,7 +260,8 @@ namespace ClientProgram
 
         public void NotifyPropertyChanged(string propName)
         {
-            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
+            if (this.PropertyChanged != null)
+                this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
         }
 
         public void UpdateMaze(string maze)
@@ -273,6 +278,7 @@ namespace ClientProgram
             mazeCols = MyMaze.Cols;
             InitialPos = MyMaze.InitialPos;
             CurPos = initialPos;
+            OppPos = initialPos;
             GoalPos = MyMaze.GoalPos;
 
         }
@@ -316,7 +322,8 @@ namespace ClientProgram
         public void UpdatePositionFromJson(string json)
         {
             string[] arr = json.Split('\"');
-            this.UpdatePosition(ref this.curPos,arr[7]);
+            this.UpdatePosition(ref this.oppPos,arr[7]);
+            NotifyPropertyChanged("OppPos");
         }
         public void UpdateSolution (string json)
         {
@@ -351,10 +358,24 @@ namespace ClientProgram
                 //connecting the client
                 this.ConnectToserver();
                 // new Task(this.CommunicateWithServer).Start();
-                task.Start();
+
             }
             this.sendCommand(myCommand);
-            task.Wait();
+            task.Start();
+
+          /*  if (this.command.Equals("start") || this.command.Equals("join"))
+            {
+                while (this.MyMaze == null)
+                {
+                    Thread.Sleep(1);
+                }
+                return;
+            }*/
+            if (!this.command.Equals("play"))
+            {
+                task.Wait();
+                
+            }
 
         }
         public void  GetGamesList(string json)

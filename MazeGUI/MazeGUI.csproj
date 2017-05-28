@@ -71,6 +71,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AbstractMultiPlayerClient.cs" />
     <Compile Include="ApplicationSettingsModel.cs" />
     <Compile Include="GameSettingswindow.xaml.cs">
       <DependentUpon>GameSettingswindow.xaml</DependentUpon>
@@ -84,8 +85,12 @@
     <Compile Include="MultiPlayerWindow.xaml.cs">
       <DependentUpon>MultiPlayerWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MyMultiPlayerClient.cs" />
+    <Compile Include="MySinglePlayerClient.cs" />
     <Compile Include="Server.cs" />
     <Compile Include="SettingsViewModel.cs" />
+    <Compile Include="AbstractClient.cs" />
+    <Compile Include="AbstractSinglePlayerClient.cs" />
     <Compile Include="SinglePlayerMenu.xaml.cs">
       <DependentUpon>SinglePlayerMenu.xaml</DependentUpon>
     </Compile>
@@ -190,6 +195,10 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Back\Harry.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

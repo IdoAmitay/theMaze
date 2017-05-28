@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,11 @@ namespace MazeGUI
         public SettingsViewModel(ISettingsModel model)
         {
             this.model = model;
+            this.model.PropertyChanged +=
+                delegate (Object sender, PropertyChangedEventArgs e)
+                {
+                    NotifyPropertyChanged(e.PropertyName);
+                };
         }
         public string ServerIP
         {
@@ -24,9 +30,7 @@ namespace MazeGUI
                 NotifyPropertyChanged("ServerIP");
             }
         }
-
-        public static readonly DependencyProperty ServerIPProperty =
-            DependencyProperty.Register("ServerIP", typeof(int), typeof(TheMazeBoard), new PropertyMetadata(0));
+        
 
 
         public int ServerPort
@@ -38,9 +42,7 @@ namespace MazeGUI
                 NotifyPropertyChanged("ServerPort");
             }
         }
-
-        public static readonly DependencyProperty ServerPortProperty =
-            DependencyProperty.Register("ServerPort", typeof(int), typeof(TheMazeBoard), new PropertyMetadata(0));
+        
 
 
         public int MazeRows
@@ -53,10 +55,6 @@ namespace MazeGUI
             }
         }
 
-        // Using a DependencyProperty as the backing store for MazeRows.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty MazeRowsProperty =
-            DependencyProperty.Register("MazeRows", typeof(int), typeof(TheMazeBoard), new PropertyMetadata(0));
-
 
         public int MazeCols
         {
@@ -67,10 +65,7 @@ namespace MazeGUI
                 NotifyPropertyChanged("MazeCols");
             }
         }
-
-        // Using a DependencyProperty as the backing store for MazeCols.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty MazeColsProperty =
-            DependencyProperty.Register("MazeCols", typeof(int), typeof(TheMazeBoard), new PropertyMetadata(0));
+        
 
 
 
@@ -83,10 +78,7 @@ namespace MazeGUI
                 NotifyPropertyChanged("SearchAlgorithm");
             }
         }
-
-        // Using a DependencyProperty as the backing store for SearchAlgorithm.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty SearchAlgorithmProperty =
-            DependencyProperty.Register("SearchAlgorithm", typeof(int), typeof(TheMazeBoard), new PropertyMetadata(0));
+        
 
         public void SaveSettings()
         {
