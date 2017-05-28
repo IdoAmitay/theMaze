@@ -54,7 +54,7 @@ namespace MazeGUI
             //vm.StartGame(name, rows, cols);
            
         }
-
+        
         private void MyPropertyChangedEventHandler(object sender, PropertyChangedEventArgs e)
         {
             Application.Current.Dispatcher.Invoke(DispatcherPriority.Background, new Action(() => {
@@ -72,7 +72,7 @@ namespace MazeGUI
                     {
                         MessageBoxResult result = MessageBox.Show("You Lost to Darco...", "Game Over");
                     }
-                    if (!this.vm.VM_IsOppConnected)
+                    if (!this.vm.VM_IsOppConnected && !this.vm.VM_ILeft)
                     {
                         MessageBoxResult result = MessageBox.Show("The opponent has left...", "Game Over");
 
@@ -123,7 +123,7 @@ namespace MazeGUI
                     this.vm.Close();
                    // mw.Show();
                     // this.Hide();
-                   // this.Close();
+                    this.Close();
                     break;
 
                 case MessageBoxResult.No:

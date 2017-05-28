@@ -12,6 +12,17 @@ namespace MazeGUI
         // IMvvmModel model;
         AbstractMultiPlayerClient model;
         private static MultiPlayerVM instance;
+        public bool VM_ILeft
+        {
+            get
+            {
+                return this.model.ILeft;
+            }
+            set
+            {
+                this.model.ILeft = value;
+            }
+        }
         public bool VM_IsOppConnected
         {
             get
@@ -205,6 +216,7 @@ namespace MazeGUI
 
             }
             this.model.CurCommand = "close";
+            this.VM_ILeft = true;
             this.model.sendCommand("close " + this.model.MyMaze.Name);
             //this.model.CommunicateWithServer();
            // NotifyPropertyChanged("IsOppConnected");/////////////////////

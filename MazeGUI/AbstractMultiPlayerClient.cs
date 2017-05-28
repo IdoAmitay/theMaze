@@ -11,7 +11,8 @@ namespace MazeGUI
     {
         protected Position oppPos;
         private bool isOppConnected;
-
+        private bool iLeft;
+        public bool ILeft { get; set; }
         public Position OppPos
         {
             get
@@ -51,8 +52,10 @@ namespace MazeGUI
                 {
                 StringBuilder messageRecieved = new StringBuilder();
                  messageRecieved.Append(breader.ReadString());
+                
                 if (messageRecieved.ToString().Contains("is now closed"))
                 {
+
                     this.Close();
                     this.IsOppConnected = false;
                     return;
