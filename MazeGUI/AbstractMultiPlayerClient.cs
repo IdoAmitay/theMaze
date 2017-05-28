@@ -10,6 +10,8 @@ namespace MazeGUI
    abstract class AbstractMultiPlayerClient : AbstractClient
     {
         protected Position oppPos;
+        private bool isOppConnected;
+
         public Position OppPos
         {
             get
@@ -22,7 +24,18 @@ namespace MazeGUI
                 NotifyPropertyChanged("CurPos");
             }
         }
-
+        public bool IsOppConnected
+        {
+            get
+            {
+                return this.isOppConnected;
+            }
+            set
+            {
+                this.isOppConnected = value;
+                NotifyPropertyChanged("IsOppConnected");
+            }
+        }
         public List<string> Games { get;  set; }
 
         public void UpdatePositionFromJson(string json)
@@ -38,6 +51,12 @@ namespace MazeGUI
                 {
                 StringBuilder messageRecieved = new StringBuilder();
                  messageRecieved.Append(breader.ReadString());
+                if (messageRecieved.ToString().Contains("is now closed"))
+                {
+                    this.Close();
+                    this.IsOppConnected = false;
+                    return;
+                }
                 this.UpdatePositionFromJson(messageRecieved.ToString());
                 }
             

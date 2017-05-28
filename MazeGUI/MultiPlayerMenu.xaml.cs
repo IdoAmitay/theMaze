@@ -26,6 +26,7 @@ namespace MazeGUI
 
             InitializeComponent();
             this.vm = MultiPlayerVM.Instance;
+            this.vm.VM_IsOppConnected = false;
             this.vm.List();
             this.DataContext = this;
             this. Visible= "Hidden";
@@ -83,7 +84,7 @@ namespace MazeGUI
         private void btnJoin_Click(object sender, RoutedEventArgs e)
         {
             this.vm.JoinGame(this.cboListOfGames.SelectedItem.ToString());
-
+            this.vm.VM_IsOppConnected = true;
             MultiPlayerWindow mp = new MultiPlayerWindow();
             this.Close();
             mp.Show();
@@ -99,6 +100,7 @@ namespace MazeGUI
             this.vm.StartGame(MazeName, Rows, Cols);
             MultiPlayerWindow mp = new MultiPlayerWindow();
             this.Close();
+            this.vm.VM_IsOppConnected = true;
             mp.Show();
            // mp.func();
             

@@ -28,8 +28,8 @@ namespace MazeGUI
         protected int mazeRows;
         protected int mazeCols;
         protected string mazeName;
-
        public Dictionary<string, Action<string>> Commands { get; set; }
+        
         public string CurCommand
         {
             get

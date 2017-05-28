@@ -61,7 +61,8 @@ namespace MazeGUI
                 myGame.Draw(vm.VM_Maze.ToString(), vm.VM_MazeRows, vm.VM_MazeCols, vm.VM_CurPos, vm.VM_GoalPos, "resources/harry potter.jpg");
                 yourGame.Draw(vm.VM_Maze.ToString(), vm.VM_MazeRows, vm.VM_MazeCols, vm.VM_OppPos, vm.VM_GoalPos, "resources/malfoy 2.jpg");
 
-                if (vm.VM_CurPos.Equals(vm.VM_GoalPos) || vm.VM_OppPos.Equals(vm.VM_GoalPos))
+                if (vm.VM_CurPos.Equals(vm.VM_GoalPos) || vm.VM_OppPos.Equals(vm.VM_GoalPos) ||
+                !this.vm.VM_IsOppConnected)
                 {
                     if (vm.VM_CurPos.Equals(vm.VM_GoalPos))
                     {
@@ -71,11 +72,16 @@ namespace MazeGUI
                     {
                         MessageBoxResult result = MessageBox.Show("You Lost to Darco...", "Game Over");
                     }
+                    if (!this.vm.VM_IsOppConnected)
+                    {
+                        MessageBoxResult result = MessageBox.Show("The opponent has left...", "Game Over");
 
+                    }
                     MainWindow mainWin = new MainWindow();
                     mainWin.Show();
                     this.Close();
                 }
+                
                 /*if (vm.VM_SecondClientClosed == true)
                 {
                     MessageBoxResult result = MessageBox.Show("The other client has left the game.", "End of game");
@@ -113,10 +119,11 @@ namespace MazeGUI
             switch (result)
             {
                 case MessageBoxResult.Yes:
-                    MainWindow mw = new MainWindow();
-                    mw.Show();
+                   // MainWindow mw = new MainWindow();
+                    this.vm.Close();
+                   // mw.Show();
                     // this.Hide();
-                    this.Close();
+                   // this.Close();
                     break;
 
                 case MessageBoxResult.No:

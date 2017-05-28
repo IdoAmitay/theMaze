@@ -12,6 +12,18 @@ namespace MazeGUI
         // IMvvmModel model;
         AbstractMultiPlayerClient model;
         private static MultiPlayerVM instance;
+        public bool VM_IsOppConnected
+        {
+            get
+            {
+                return this.model.IsOppConnected;
+            }
+            set
+            {
+                this.model.IsOppConnected = value;
+                NotifyPropertyChanged("IsOppConnected");
+            }
+        }
         public MazeLib.Position VM_OppPos
         {
             get
@@ -185,8 +197,17 @@ namespace MazeGUI
         }
         public void Close ()
         {
-            this.model.TalkWithServer("close " + this.model.MyMaze.Name);
-            NotifyPropertyChanged("MyMaze");/////////////////////
+            //this.model.TalkWithServer("close " + this.model.MyMaze.Name);
+            if (!this.model.IsConnected())
+            {
+                //connecting the client
+                this.model.ConnectToserver();
+
+            }
+            this.model.CurCommand = "close";
+            this.model.sendCommand("close " + this.model.MyMaze.Name);
+            //this.model.CommunicateWithServer();
+           // NotifyPropertyChanged("IsOppConnected");/////////////////////
         }
         public void List ()
         {
